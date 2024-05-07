@@ -24,14 +24,8 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
     private lateinit var  auth: FirebaseAuth
 
     fun login() {
-
         validateUsername()
         validatePassword()
-        validateEmail()
-
-        if (isInputValid()) {
-            checkIfUserLogged()
-        }
 
     }
 
@@ -44,26 +38,7 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
         editor.apply()
     }
 
-    private fun checkIfUserLogged() {
-        val loggedInUsername =
-            preferences.getString(PREF_USERNAME, "Default")
-        val loggedInPassword =
-            preferences.getString(PREF_USER_PASSWORD, "")
 
-        Log.d("mtag", "$loggedInUsername + $loggedInPassword")
-        auth = FirebaseAuth.getInstance()
-        auth.signInWithEmailAndPassword("danielgrecia7@gmail.com","ddggcc77n").addOnSuccessListener { authResult ->
-            Log.d("login", "UserViewMode: ${authResult}")
-            loginResult.value = LoginResult.SUCCESSFUL.value
-        }.addOnFailureListener { e ->
-                Log.d("login", "Error en la autenticación: ${e.message}")
-                loginResult.value = LoginResult.LOGIN_ERROR.value
-            }
-
-        loginResult.value = LoginResult.SUCCESSFUL.value
-    }
-
-    //fun isPasswordValid() = user.userPassword.length > 5
 
     private fun validatePassword() {
         when {
@@ -87,7 +62,7 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
             user.username.isEmpty() -> {
                 usernameValidation.value = LoginResult.EMPTY_USERNAME.value
             }
-            user.username.length < 7 -> usernameValidation.value = LoginResult.SHORt_USERNAME.value
+            user.username.length < 5 -> usernameValidation.value = LoginResult.SHORT_USERNAME.value
 
             else -> usernameValidation.value = LoginResult.OK.value
         }

@@ -13,12 +13,6 @@
         <action
             android:id="@+id/action_blankFragment2_to_blankFragment22"
             app:destination="@id/blankFragment22" />
-        <action
-            android:id="@+id/action_blankFragment2_to_blankFragment3"
-            app:destination="@id/blankFragment3" />
-        <action
-            android:id="@+id/action_blankFragment2_to_view_maps_shipping"
-            app:destination="@id/view_maps_shipping" />
     </fragment>
     <fragment
         android:id="@+id/blankFragment22"
@@ -27,24 +21,6 @@
         tools:layout="@layout/login" >
         <action
             android:id="@+id/action_blankFragment22_to_blankFragment2"
-            app:destination="@id/blankFragment2" />
-    </fragment>
-    <fragment
-        android:id="@+id/blankFragment3"
-        android:name="com.shipping.test_cordinadora.ui.view.BlankFragment3"
-        android:label="fragment_blank3"
-        tools:layout="@layout/reorder_load" >
-        <action
-            android:id="@+id/action_blankFragment3_to_blankFragment2"
-            app:destination="@id/blankFragment2" />
-    </fragment>
-    <fragment
-        android:id="@+id/view_maps_shipping"
-        android:name="com.shipping.test_cordinadora.ui.view.ViewMapsShipping"
-        android:label="fragment_view_maps_shipping"
-        tools:layout="@layout/fragment_view_maps_shipping" >
-        <action
-            android:id="@+id/action_view_maps_shipping_to_blankFragment2"
             app:destination="@id/blankFragment2" />
     </fragment>
 

@@ -119,7 +119,7 @@ class Home : Fragment() {
                 R.id.home_reorder_load_home-> {
                     quoteViewModel.isLoading.observe(viewLifecycleOwner, Observer {
                         if (!it) {
-                            findNavController().navigate(R.id.action_blankFragment2_to_blankFragment3)
+                           // findNavController().navigate(R.id.action_blankFragment2_to_blankFragment3)
                         }
                     })
                     true

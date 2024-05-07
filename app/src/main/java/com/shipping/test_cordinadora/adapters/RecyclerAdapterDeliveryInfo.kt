@@ -70,7 +70,7 @@ class RecyclerAdapterDeliveryInfo (private val remisionViewModel:RemisionViewMod
             this.navController?.let {
                     navController ->
                 remisionViewModel.enviarRemision( this.deliveryInfo.get(position) )
-                navController.navigate(R.id.action_blankFragment2_to_view_maps_shipping)
+               // navController.navigate(R.id.action_blankFragment2_to_view_maps_shipping)
             }
 
         }

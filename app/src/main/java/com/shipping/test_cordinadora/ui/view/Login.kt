@@ -70,7 +70,7 @@ class Login : Fragment() {
         userVM.usernameValidation.observe(viewLifecycleOwner, Observer { newValue ->
             when (newValue) {
                 LoginResult.EMPTY_USERNAME.value -> setUserNameError(getString((R.string.username_error_no_username)))
-                LoginResult.SHORt_USERNAME.value -> setUserNameError(getString((R.string.username_error_long_username)))
+                LoginResult.SHORT_USERNAME.value -> setUserNameError(getString((R.string.username_error_short_user_name)))
                 else -> binding.editUsername.error = null
             }
         })
