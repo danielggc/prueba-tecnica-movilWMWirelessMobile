@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 
-    package="com.shipping.test_cordinadora">
+    package="com.shipping.prueba_tecnica_movil">
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
-        android:name="com.shipping.test_cordinadora.MvvmExampleApp"
+        android:name="com.shipping.prueba_tecnica_movil.wireless_movile"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -17,7 +17,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name="com.shipping.test_cordinadora.ui.view.MainActivity"
+        <activity android:name="com.shipping.prueba_tecnica_movil.ui.view.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

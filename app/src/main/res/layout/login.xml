@@ -9,14 +9,14 @@
 
         <variable
             name="userVM"
-            type="com.shipping.test_cordinadora.ui.viewmodel.UserViewModel" />
+            type="com.shipping.prueba_tecnica_movil.ui.viewmodel.UserViewModel" />
     </data>
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.shipping.test_cordinadora.ui.view.login">
+        tools:context="com.shipping.prueba_tecnica_movil.ui.view.login">
 
 
 
