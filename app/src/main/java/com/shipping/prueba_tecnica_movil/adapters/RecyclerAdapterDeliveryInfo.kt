@@ -44,9 +44,9 @@ class RecyclerAdapterDeliveryInfo (private val remisionViewModel:RemisionViewMod
 
         val isExpandable: Boolean = deliveryInfo[position].statusExpandable
 
-        holder.expendableLayout.visibility = if (isExpandable) View.VISIBLE else View.GONE
+        holder.expandableLayout.visibility = if (isExpandable) View.VISIBLE else View.GONE
 
-        holder.linearLayout.setOnClickListener{
+        holder.iconButtonExpandable.setOnClickListener{
             val version = deliveryInfo[position]
             version.statusExpandable = !item.statusExpandable
             notifyItemChanged(position)
@@ -85,28 +85,28 @@ class RecyclerAdapterDeliveryInfo (private val remisionViewModel:RemisionViewMod
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        val codigoRemision                      = view.findViewById(R.id.codigo_remision_item) as TextView
-        val direccionDestinatario               = view.findViewById(R.id.direccion_destinatario_item) as TextView
-        val nombreTerminalDestino               = view.findViewById(R.id.nombre_terminal_destino_item) as TextView
-        var expendableLayout : RelativeLayout   = itemView.findViewById(R.id.expandable_layout)
-        var linearLayout                        = view.findViewById<ImageButton>(R.id.icon_button_user)
-        var cellPone                            = view.findViewById(R.id.telefono_item_r) as TextView
-        var ownerDestination                    = view.findViewById(R.id.destinatario_item_r) as TextView
-        var origen                              = view.findViewById(R.id.origen_Info_item_r) as TextView
-        val imageButton                         = view.findViewById<ImageButton>(R.id.icon_button_map_iem)
-        val image                               = view.findViewById<ImageView>(R.id.icon_user_item)
+        private  val itemInfoOfficialName                       = view.findViewById(R.id.item_info_official_name) as TextView
+        private val itemInfoCapital                             = view.findViewById(R.id.item_info_capital) as TextView
+        private val itemInfoCurrenciesCountry                   = view.findViewById(R.id.item_info_currencies_country) as TextView
+        private var expandableLayout : RelativeLayout           = itemView.findViewById(R.id.expandable_layout)
+        private var iconButtonExpandable                        = view.findViewById<ImageButton>(R.id.icon_button_expandable)
+        private var itemInfoAreaCountryR                        = view.findViewById(R.id.item_info_area_country_r) as TextView
+        private var itemInfoLanguagesR                          = view.findViewById(R.id.item_info_languages_r) as TextView
+        private var itemInfoContinentsCountryR                  = view.findViewById(R.id.item_info_continents_country_r) as TextView
+        private val itemInfoMoreInformationIcon                 = view.findViewById<ImageButton>(R.id.item_info_more_information_icon)
+        private val itemInfoFlagsCountry                        = view.findViewById<ImageView>(R.id.item_info_flags_country)
 
         fun bind(remissionData:Country, context: Context){
-            codigoRemision.text             = remissionData.name.common
-            direccionDestinatario.text      = remissionData.capital.toString()
-            nombreTerminalDestino.text      = remissionData.positionCounter.toString()
-            cellPone.text                   = remissionData.currencies
-            ownerDestination.text           = remissionData.region
-            origen.text                     = remissionData.subregion
+            itemInfoOfficialName.text                  = remissionData.name.official
+            itemInfoCapital.text                       = remissionData.capital.toString()
+            itemInfoCurrenciesCountry.text             = remissionData.currencies.toString()
+            itemInfoAreaCountryR.text                  = remissionData.area.toString()
+            itemInfoLanguagesR.text                    = remissionData.languages.values.toString()
+            itemInfoContinentsCountryR.text            = remissionData.subregion
             Glide.with(context)
                 .load(remissionData.flags)
                 .centerCrop()
-                .into(image)
+                .into(itemInfoFlagsCountry)
         }
 
     }

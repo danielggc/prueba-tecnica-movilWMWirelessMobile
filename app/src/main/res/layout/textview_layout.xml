@@ -10,7 +10,7 @@
     android:layout_margin="10dp">
 
     <ImageView
-        android:id="@+id/icon_user_item"
+        android:id="@+id/item_info_flags_country"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginEnd="10dp"
@@ -19,42 +19,42 @@
 
         />
     <TextView
-        android:id="@+id/codigo_remision_item"
+        android:id="@+id/item_info_official_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
         android:textSize="17sp"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/icon_user_item"
-        android:layout_toEndOf="@+id/icon_user_item"
-        tools:text= "dadawdawdwd" />
+        android:layout_toRightOf="@+id/item_info_flags_country"
+        android:layout_toEndOf="@+id/item_info_flags_country"
+        tools:text= "country" />
     <TextView
-        android:id="@+id/direccion_destinatario_item"
+        android:id="@+id/item_info_capital"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="10sp"
-        android:layout_below="@+id/codigo_remision_item"
-        android:layout_toRightOf="@+id/icon_user_item"
-        android:layout_toEndOf="@+id/icon_user_item"
-        tools:text = "wdawd"/>
+        android:layout_below="@+id/item_info_official_name"
+        android:layout_toRightOf="@+id/item_info_flags_country"
+        android:layout_toEndOf="@+id/item_info_flags_country"
+        tools:text = "capital"/>
 
     <TextView
-        android:id="@+id/nombre_terminal_destino_item"
+        android:id="@+id/item_info_currencies_country"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="52dp"
         android:layout_marginRight="42dp"
         android:layout_marginLeft="62dp"
-        android:layout_toStartOf="@+id/icon_button_user"
-        android:layout_toLeftOf="@+id/icon_button_user"
+        android:layout_toStartOf="@+id/icon_button_expandable"
+        android:layout_toLeftOf="@+id/icon_button_expandable"
         android:gravity="center_vertical"
         android:textStyle="italic"
         tools:text="DC" />
 
     <ImageButton
-        android:id="@+id/icon_button_user"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
+        android:id="@+id/icon_button_expandable"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
         android:background="@android:color/transparent"
@@ -67,75 +67,75 @@
         android:layout_height="match_parent"
         android:id="@+id/expandable_layout"
         android:visibility="visible"
-        android:layout_below="@+id/icon_user_item"
+        android:layout_below="@+id/item_info_flags_country"
         tools:ignore="ExtraText">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/destinatario_item"
+            android:id="@+id/item_info_languages_country"
             android:textColor="@color/black"
             android:textStyle="bold"
             android:textSize="14dp"
-            android:text="DESTINATARIO"/>
+            android:text="LANGUAGE"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/destinatario_item_r"
+            android:id="@+id/item_info_languages_r"
             android:textColor="@color/grey"
             android:textSize="12sp"
             android:padding="12dp"
-            android:text="name"
-            android:layout_below="@id/destinatario_item"/>
+            android:text="Romanian"
+            android:layout_below="@id/item_info_languages_country"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/telefono_item"
+            android:id="@+id/item_info_area_country"
             android:textColor="@color/black"
             android:textStyle="bold"
             android:textSize="14sp"
-            android:text="TELEFONO"
-            android:layout_below="@id/destinatario_item_r"/>
+            android:text="AREA"
+            android:layout_below="@id/item_info_languages_r"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/telefono_item_r"
+            android:id="@+id/item_info_area_country_r"
             android:textColor="@color/grey"
             android:textSize="12sp"
             android:padding="12dp"
             android:text="name"
-            android:layout_below="@id/telefono_item"/>
+            android:layout_below="@id/item_info_area_country"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/origen_Info_item"
+            android:id="@+id/item_info_continents_country"
             android:textColor="@color/black"
             android:textStyle="bold"
             android:textSize="14sp"
-            android:text="ORIGEN"
-            android:layout_below="@id/telefono_item_r"/>
+            android:text="CONTINENTS"
+            android:layout_below="@id/item_info_area_country_r"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/origen_Info_item_r"
+            android:id="@+id/item_info_continents_country_r"
             android:textColor="@color/grey"
             android:textSize="12sp"
             android:padding="12dp"
-            android:text="name"
-            android:layout_below="@id/origen_Info_item"/>
+            android:text="Europe"
+            android:layout_below="@id/item_info_continents_country"/>
 
 
         <ImageButton
-            android:id="@+id/icon_button_map_iem"
+            android:id="@+id/item_info_more_information_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
-            android:src="@drawable/map"
-            android:layout_below="@id/origen_Info_item_r"/>
+            android:src="@drawable/data_analysis"
+            android:layout_below="@id/item_info_continents_country_r"/>
         />
     </RelativeLayout>
 

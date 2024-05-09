@@ -68,9 +68,9 @@ class RecyclerAdapterReorderLoad : RecyclerView.Adapter<RecyclerAdapterReorderLo
 
 
         fun bind(deliveryInfo: Remission, context: Context, position: Int){
-            superheroName.text       = deliveryInfo.codigoRemision
-            realName.text            = deliveryInfo.direccionDestinatario
-            status.text              = deliveryInfo.nombreTerminalDestino
+            superheroName.text       = deliveryInfo.itemInfoOfficialName
+            realName.text            = deliveryInfo.itemInfoCapital
+            status.text              = deliveryInfo.itemInfoCurrenciesCountry
             idex.text                = deliveryInfo .firstOrder.toString()
         }
 
