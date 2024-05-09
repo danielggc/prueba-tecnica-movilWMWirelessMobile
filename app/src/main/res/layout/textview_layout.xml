@@ -10,13 +10,12 @@
     android:layout_margin="10dp">
 
     <ImageView
-        android:id="@+id/iconIdex"
+        android:id="@+id/icon_user_item"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/user"
 
         />
     <TextView
@@ -26,8 +25,8 @@
         android:textStyle="bold"
         android:textSize="17sp"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/iconIdex"
-        android:layout_toEndOf="@+id/iconIdex"
+        android:layout_toRightOf="@+id/icon_user_item"
+        android:layout_toEndOf="@+id/icon_user_item"
         tools:text= "dadawdawdwd" />
     <TextView
         android:id="@+id/direccion_destinatario_item"
@@ -35,8 +34,8 @@
         android:layout_height="wrap_content"
         android:textSize="10sp"
         android:layout_below="@+id/codigo_remision_item"
-        android:layout_toRightOf="@+id/iconIdex"
-        android:layout_toEndOf="@+id/iconIdex"
+        android:layout_toRightOf="@+id/icon_user_item"
+        android:layout_toEndOf="@+id/icon_user_item"
         tools:text = "wdawd"/>
 
     <TextView
@@ -68,7 +67,7 @@
         android:layout_height="match_parent"
         android:id="@+id/expandable_layout"
         android:visibility="visible"
-        android:layout_below="@+id/iconIdex"
+        android:layout_below="@+id/icon_user_item"
         tools:ignore="ExtraText">
 
         <TextView

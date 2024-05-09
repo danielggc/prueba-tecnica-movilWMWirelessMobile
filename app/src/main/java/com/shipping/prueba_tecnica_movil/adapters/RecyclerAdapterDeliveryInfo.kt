@@ -6,10 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.shipping.prueba_tecnica_movil.R
 import com.shipping.prueba_tecnica_movil.domain.model.Country
 import com.shipping.prueba_tecnica_movil.ui.viewmodel.RemisionViewModel
@@ -92,6 +94,7 @@ class RecyclerAdapterDeliveryInfo (private val remisionViewModel:RemisionViewMod
         var ownerDestination                    = view.findViewById(R.id.destinatario_item_r) as TextView
         var origen                              = view.findViewById(R.id.origen_Info_item_r) as TextView
         val imageButton                         = view.findViewById<ImageButton>(R.id.icon_button_map_iem)
+        val image                               = view.findViewById<ImageView>(R.id.icon_user_item)
 
         fun bind(remissionData:Country, context: Context){
             codigoRemision.text             = remissionData.name.common
@@ -100,6 +103,10 @@ class RecyclerAdapterDeliveryInfo (private val remisionViewModel:RemisionViewMod
             cellPone.text                   = remissionData.currencies
             ownerDestination.text           = remissionData.region
             origen.text                     = remissionData.subregion
+            Glide.with(context)
+                .load(remissionData.flags)
+                .centerCrop()
+                .into(image)
         }
 
     }
