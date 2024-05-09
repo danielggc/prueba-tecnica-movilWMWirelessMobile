@@ -52,7 +52,7 @@ class RecyclerAdapterDeliveryInfo (private val remisionViewModel:RemisionViewMod
             notifyItemChanged(position)
         }
         holder
-            .imageButton
+            .itemInfoMoreInformationIcon
             .setOnClickListener{
             Log.d("MAP", "RecyclerAdapterDeliveryInfo: click ")
             this.navController?.let {
@@ -88,16 +88,19 @@ class RecyclerAdapterDeliveryInfo (private val remisionViewModel:RemisionViewMod
         private  val itemInfoOfficialName                       = view.findViewById(R.id.item_info_official_name) as TextView
         private val itemInfoCapital                             = view.findViewById(R.id.item_info_capital) as TextView
         private val itemInfoCurrenciesCountry                   = view.findViewById(R.id.item_info_currencies_country) as TextView
-        private var expandableLayout : RelativeLayout           = itemView.findViewById(R.id.expandable_layout)
-        private var iconButtonExpandable                        = view.findViewById<ImageButton>(R.id.icon_button_expandable)
+        var expandableLayout : RelativeLayout                   = itemView.findViewById(R.id.expandable_layout)
+        var iconButtonExpandable                                = view.findViewById<ImageButton>(R.id.icon_button_expandable)
         private var itemInfoAreaCountryR                        = view.findViewById(R.id.item_info_area_country_r) as TextView
         private var itemInfoLanguagesR                          = view.findViewById(R.id.item_info_languages_r) as TextView
         private var itemInfoContinentsCountryR                  = view.findViewById(R.id.item_info_continents_country_r) as TextView
-        private val itemInfoMoreInformationIcon                 = view.findViewById<ImageButton>(R.id.item_info_more_information_icon)
+        val itemInfoMoreInformationIcon                 = view.findViewById<ImageButton>(R.id.item_info_more_information_icon)
         private val itemInfoFlagsCountry                        = view.findViewById<ImageView>(R.id.item_info_flags_country)
 
         fun bind(remissionData:Country, context: Context){
-            itemInfoOfficialName.text                  = remissionData.name.official
+            if(remissionData.name.official.length > 22 )
+                itemInfoOfficialName.text                  = remissionData.name.official.substring(0,20)+"..."
+            else
+                itemInfoOfficialName.text                  = remissionData.name.official
             itemInfoCapital.text                       = remissionData.capital.toString()
             itemInfoCurrenciesCountry.text             = remissionData.currencies.toString()
             itemInfoAreaCountryR.text                  = remissionData.area.toString()

@@ -3,7 +3,6 @@ package com.shipping.prueba_tecnica_movil
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.shipping.prueba_tecnica_movil.domain.GetRemissionModelUseCase
 import com.shipping.prueba_tecnica_movil.domain.GetRandomRemissionUseCase
-import com.shipping.prueba_tecnica_movil.domain.model.Quote
 import com.shipping.prueba_tecnica_movil.ui.viewmodel.QuoteViewModel
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
