@@ -2,12 +2,11 @@ package com.shipping.prueba_tecnica_movil.data
 
 import android.util.Log
 import com.shipping.prueba_tecnica_movil.data.database.dao.RemissionDao
-import com.shipping.prueba_tecnica_movil.data.database.entities.RemissionEntity
+import com.shipping.prueba_tecnica_movil.data.database.entities.CountryEntity
 import com.shipping.prueba_tecnica_movil.data.database.entities.toDatabase
 import com.shipping.prueba_tecnica_movil.data.model.ApiResponse
 import com.shipping.prueba_tecnica_movil.data.network.QuoteService
 import com.shipping.prueba_tecnica_movil.domain.model.Country
-import com.shipping.prueba_tecnica_movil.domain.model.Remission
 import com.shipping.prueba_tecnica_movil.domain.model.toDomain
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
@@ -18,37 +17,38 @@ class RemissionRepository @Inject constructor(
     private val quoteDao: RemissionDao
 ) {
 
-    suspend fun getAllQuotesFromApi(): List<Country> {
-        val response: ApiResponse = api.getCountries()
+    suspend fun getAllCountriesFromApi(): List<Country> {
 
-        return  response.data.mapIndexed { index, e -> e.toDomain() }
+        val response: ApiResponse = api.getCountries()
+        Log.d("response ", "invoke: service " + response )
+
+        return  response.data.mapIndexed { index, e ->  e.toDomain(index) }
     }
 
-    suspend fun getAllQuotesFromDatabase():List<Remission>{
-        val response: List<RemissionEntity> = quoteDao.getAllQuotes()
+    suspend fun getAllCountriesFromDatabase():List<Country>{
+        val response: List<CountryEntity> = quoteDao.getAllCountries()
         return response.map { it.toDomain() }
     }
 
 
-    suspend fun actualizarRemisiones(remissionList: List<Remission>):Int{
+    suspend fun updateListCountries(remissionList: List<Country>):Int{
         val updatedRows = withContext(Dispatchers.IO) {
             quoteDao.updateOrder(remissionList.map { it.toDatabase() })
         }
         return updatedRows
     }
-    suspend fun  getRemissionsInBatchesFromDataBAse( pageSize: Int, offset: Int ) : List<Remission>{
-        val response :List<RemissionEntity> = quoteDao.getRemissionsInBatches( pageSize ,offset )
+    suspend fun  getCountriesInBatchesFromDataBase(pageSize: Int, offset: Int ) : List<Country>{
+        val response :List<CountryEntity> = quoteDao.getcountriesInBatches( pageSize ,offset )
         Log.d("DATABASE", "getRemissionsInBatchesFromDataBAse:  " + response)
         return  response.map{it.toDomain()}
     }
 
-    suspend fun insertQuotes(remissionModel:List<RemissionEntity>){
+    suspend fun insertCountry(remissionModel:List<CountryEntity>){
         Log.d("DATABASE", "insertQuotes:  " + remissionModel )
-
         quoteDao.insertAll(remissionModel)
     }
 
-    suspend fun clearQuotes(){
+    suspend fun clearAllCountries(){
         quoteDao.deleteAllQuotes()
     }
 }

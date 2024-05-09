@@ -3,13 +3,13 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.shipping.prueba_tecnica_movil.domain.model.Remission
+import com.shipping.prueba_tecnica_movil.domain.model.Country
 
 class RemisionViewModel : ViewModel() {
-    private val _remisionLiveData = MutableLiveData<Remission>()
-    val remisionLiveData: LiveData<Remission> = _remisionLiveData
+    private val _remisionLiveData = MutableLiveData<Country>()
+    val remisionLiveData: LiveData<Country> = _remisionLiveData
 
-    fun enviarRemision(remision: Remission) {
+    fun enviarRemision(remision: Country) {
         Log.d("Correct", "enviarRemision: ")
         _remisionLiveData.value = remision
     }

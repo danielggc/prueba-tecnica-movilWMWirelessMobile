@@ -8,7 +8,7 @@ import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.shipping.prueba_tecnica_movil.domain.GetRemissionModelUseCase
 import com.shipping.prueba_tecnica_movil.domain.GetRandomRemissionUseCase
-import com.shipping.prueba_tecnica_movil.domain.model.Remission
+import com.shipping.prueba_tecnica_movil.domain.model.Country
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -24,13 +24,13 @@ class QuoteViewModel @Inject constructor(
 
 
 
-    fun updateRemissionList(remissionList: List<Remission>) {
+    fun updateRemissionList(remissionList: List<Country>) {
         isLoading.postValue(true)
         viewModelScope.launch {
             try {
-                val list: List<Remission> = remissionList.mapIndexedNotNull { index, remission ->
-                    if (remission.order != index) {
-                        remission.copy(order = index)
+                val list: List<Country> = remissionList.mapIndexedNotNull { index, remission ->
+                    if (remission.positionCounter != index) {
+                        remission.copy(positionCounter = index)
                     } else {
                         null
                     }
@@ -47,7 +47,7 @@ class QuoteViewModel @Inject constructor(
             }
         }
     }
-    fun getRemissionsInBatches(pageSize: Int, offset: Int): LiveData<List<Remission>> {
+    fun getRemissionsInBatches(pageSize: Int, offset: Int): LiveData<List<Country>> {
         Log.d("TAG", "getRemissionsInBatches: "+  offset)
         return liveData{
             val response = getRandomRemissionUseCase.getRemissionsInBatches(pageSize, offset)
@@ -59,6 +59,8 @@ class QuoteViewModel @Inject constructor(
 
 
     fun onCreate() {
+        Log.d("init ", "init get data ")
+
         isLoading.postValue(true)
         viewModelScope.launch {
             val result = getQuotesUseCase()

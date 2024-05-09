@@ -26,28 +26,28 @@ class GetQuotesUseCaseTest {
     @Test
     fun `when the api doesnt return anything then get values from database`() = runBlocking {
         //Given
-        coEvery { remissionRepository.getAllQuotesFromApi() } returns emptyList()
+        coEvery { remissionRepository.getAllCountriesFromApi() } returns emptyList()
 
         //When
         getQuotesUseCase()
 
         //Then
-        coVerify(exactly = 1) { remissionRepository.getAllQuotesFromDatabase() }
+        coVerify(exactly = 1) { remissionRepository.getAllCountriesFromDatabase() }
     }
 
     @Test
     fun `when the api return something then get values from api`() = runBlocking {
         //Given
         val myList = listOf(Quote("Déjame un comentario", "AristiDevs"))
-        coEvery { remissionRepository.getAllQuotesFromApi() } returns myList
+        coEvery { remissionRepository.getAllCountriesFromApi() } returns myList
 
         //When
         val response = getQuotesUseCase()
 
         //Then
-        coVerify(exactly = 1) { remissionRepository.clearQuotes() }
-        coVerify(exactly = 1) { remissionRepository.insertQuotes(any()) }
-        coVerify(exactly = 0) { remissionRepository.getAllQuotesFromDatabase() }
+        coVerify(exactly = 1) { remissionRepository.clearAllCountries() }
+        coVerify(exactly = 1) { remissionRepository.insertCountry(any()) }
+        coVerify(exactly = 0) { remissionRepository.getAllCountriesFromDatabase() }
         assert(response == myList)
     }
 }

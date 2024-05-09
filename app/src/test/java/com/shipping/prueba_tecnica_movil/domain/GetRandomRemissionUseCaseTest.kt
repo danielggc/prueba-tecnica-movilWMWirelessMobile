@@ -24,7 +24,7 @@ class GetRandomRemissionUseCaseTest {
 
     @Test
     fun `when database is empty then return null`() = runBlocking {
-        coEvery { remissionRepository.getAllQuotesFromDatabase() } returns emptyList()
+        coEvery { remissionRepository.getAllCountriesFromDatabase() } returns emptyList()
 
         val response = getRandomQuoteUseCase()
 
@@ -35,7 +35,7 @@ class GetRandomRemissionUseCaseTest {
     fun `when database is not empty then return quote`() = runBlocking {
         val quoteList = listOf(Quote("Holi", "AristiDevs"))
 
-        coEvery { remissionRepository.getAllQuotesFromDatabase() } returns quoteList
+        coEvery { remissionRepository.getAllCountriesFromDatabase() } returns quoteList
 
         val response = getRandomQuoteUseCase()
 

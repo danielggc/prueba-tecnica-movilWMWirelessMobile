@@ -1,29 +1,33 @@
-package com.shipping.prueba_tecnica_movil.data.database.dao
+    package com.shipping.prueba_tecnica_movil.data.database.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
-import androidx.room.Update
-import com.shipping.prueba_tecnica_movil.data.database.entities.RemissionEntity
+    import androidx.room.Dao
+    import androidx.room.Insert
+    import androidx.room.OnConflictStrategy
+    import androidx.room.Query
+    import androidx.room.Update
+    import com.shipping.prueba_tecnica_movil.data.database.entities.CountryEntity
+    import androidx.room.TypeConverters
+    import androidx.room.Database
+    import com.shipping.prueba_tecnica_movil.data.database.Converters
 
-@Dao
-interface RemissionDao {
 
-    @Query("SELECT * FROM remission_table ORDER BY id DESC")
-    suspend fun getAllQuotes():List<RemissionEntity>
-    @Query("SELECT * FROM remission_table ORDER BY `order` ASC LIMIT :pageSize OFFSET :offset")
-    suspend fun getRemissionsInBatches(pageSize: Int, offset: Int): List<RemissionEntity>
+    @Dao
+    interface RemissionDao {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(remissionModel:List<RemissionEntity>)
+        @Query("SELECT * FROM country_table ORDER BY name_common DESC")
+        suspend fun getAllCountries():List<CountryEntity>
+        @Query("SELECT * FROM country_table ORDER BY `positionCounter` ASC LIMIT :pageSize OFFSET :offset")
+        suspend fun getcountriesInBatches(pageSize: Int, offset: Int): List<CountryEntity>
 
-    @Query("DELETE FROM remission_table")
-    suspend fun deleteAllQuotes()
+        @Insert(onConflict = OnConflictStrategy.REPLACE)
+        suspend fun insertAll(remissionModel:List<CountryEntity>)
 
-    @Update
-    fun updateOrder(items: List<RemissionEntity>):Int
-}
+        @Query("DELETE FROM country_table")
+        suspend fun deleteAllQuotes()
+
+        @Update
+        fun updateOrder(items: List<CountryEntity>):Int
+    }
 
 
 

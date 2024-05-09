@@ -14,12 +14,12 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object RoomModule {
 
-    private const val QUOTE_DATABASE_NAME = "remission_table"
+    private const val COUNTRIES_DATABASE_NAME = "countries_table"
 
     @Singleton
     @Provides
     fun provideRoom(@ApplicationContext context: Context) =
-        Room.databaseBuilder(context, RemissionDatabase::class.java, QUOTE_DATABASE_NAME).build()
+        Room.databaseBuilder(context, RemissionDatabase::class.java, COUNTRIES_DATABASE_NAME).build()
 
     @Singleton
     @Provides

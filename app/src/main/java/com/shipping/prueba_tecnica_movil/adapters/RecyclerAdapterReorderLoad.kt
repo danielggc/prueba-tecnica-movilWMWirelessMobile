@@ -1,5 +1,5 @@
 package com.shipping.prueba_tecnica_movil.adapters
-
+/*
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -77,3 +77,5 @@ class RecyclerAdapterReorderLoad : RecyclerView.Adapter<RecyclerAdapterReorderLo
     }
 
 }
+
+ */

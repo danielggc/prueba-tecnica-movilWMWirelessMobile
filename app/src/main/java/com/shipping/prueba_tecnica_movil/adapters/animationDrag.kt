@@ -1,5 +1,6 @@
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+/*
 import com.shipping.prueba_tecnica_movil.adapters.RecyclerAdapterReorderLoad
 class ItemTouchHelperCallback (private val adapter: RecyclerAdapterReorderLoad): ItemTouchHelper.Callback() {
 
@@ -39,3 +40,5 @@ class ItemTouchHelperCallback (private val adapter: RecyclerAdapterReorderLoad):
     }
 
 }
+
+ */

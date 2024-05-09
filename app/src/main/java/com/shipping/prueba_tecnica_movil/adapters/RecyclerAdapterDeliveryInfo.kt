@@ -11,25 +11,13 @@ import android.widget.TextView
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.shipping.prueba_tecnica_movil.R
-import com.shipping.prueba_tecnica_movil.domain.model.Remission
+import com.shipping.prueba_tecnica_movil.domain.model.Country
 import com.shipping.prueba_tecnica_movil.ui.viewmodel.RemisionViewModel
 
 class RecyclerAdapterDeliveryInfo (private val remisionViewModel:RemisionViewModel): RecyclerView.Adapter<RecyclerAdapterDeliveryInfo.ViewHolder>() {
 
-    val remission = Remission(
-        order = 1,
-        firstOrder = 123,
-        id = "ABC123",
-        codigoRemision = "CR-001",
-        direccionDestinatario = "Calle Principal 123",
-        nombreTerminalDestino = "Terminal Central",
-        telefonoDestinatario = "555-1234",
-        nombreDestinatario = "Juan Pérez",
-        oriogen = "Ciudad Origen",
-        latitud = "123.456",
-        longitud = "789.012",
-    )
-    var deliveryInfo: MutableList<Remission>  = ArrayList()
+
+    var deliveryInfo: MutableList<Country>  = ArrayList()
     lateinit var context:Context
     private var navController: NavController? = null
 
@@ -38,27 +26,27 @@ class RecyclerAdapterDeliveryInfo (private val remisionViewModel:RemisionViewMod
         notifyDataSetChanged()
     }
 
-    fun add(newDeliveryInfo: Remission) {
-        val existingItem = deliveryInfo.find { it.id == newDeliveryInfo.id }
+    fun add(newDeliveryInfo: Country) {
+        val existingItem = deliveryInfo.find { it.name == newDeliveryInfo.name }
         if (existingItem == null) {
             deliveryInfo.add(newDeliveryInfo)
             notifyItemInserted(deliveryInfo.size - 1)
         }
     }
-    fun RecyclerAdapter(superheros : MutableList<Remission>, context: Context){
+    fun RecyclerAdapter(superheros : MutableList<Country>, context: Context){
         this.context = context
     }
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = deliveryInfo.get(position)
         holder.bind(item, context)
 
-        val isExpandable: Boolean = deliveryInfo[position].StatusExpandable
+        val isExpandable: Boolean = deliveryInfo[position].statusExpandable
 
         holder.expendableLayout.visibility = if (isExpandable) View.VISIBLE else View.GONE
 
         holder.linearLayout.setOnClickListener{
             val version = deliveryInfo[position]
-            version.StatusExpandable = !item.StatusExpandable
+            version.statusExpandable = !item.statusExpandable
             notifyItemChanged(position)
         }
         holder
@@ -105,13 +93,13 @@ class RecyclerAdapterDeliveryInfo (private val remisionViewModel:RemisionViewMod
         var origen                              = view.findViewById(R.id.origen_Info_item_r) as TextView
         val imageButton                         = view.findViewById<ImageButton>(R.id.icon_button_map_iem)
 
-        fun bind(remissionData:Remission, context: Context){
-            codigoRemision.text             = remissionData.codigoRemision
-            direccionDestinatario.text      = remissionData.direccionDestinatario
-            nombreTerminalDestino.text      = remissionData.firstOrder.toString()
-            cellPone.text                   = remissionData.telefonoDestinatario
-            ownerDestination.text           = remissionData.nombreDestinatario
-            origen.text                     = remissionData.oriogen
+        fun bind(remissionData:Country, context: Context){
+            codigoRemision.text             = remissionData.name.common
+            direccionDestinatario.text      = remissionData.capital.toString()
+            nombreTerminalDestino.text      = remissionData.positionCounter.toString()
+            cellPone.text                   = remissionData.currencies
+            ownerDestination.text           = remissionData.region
+            origen.text                     = remissionData.subregion
         }
 
     }
