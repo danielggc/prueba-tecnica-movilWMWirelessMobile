@@ -48,7 +48,7 @@
 
 
                 <TextView
-                    android:id="@+id/text_region_value"
+                    android:id="@+id/text_common_name_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/text_region"
@@ -65,12 +65,12 @@
                 android:text="Nombre oficial:"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:layout_below="@id/text_region_value"
+                android:layout_below="@id/text_common_name_value"
                 android:layout_marginTop="8dp"
                 android:layout_marginStart="32dp"/>
 
                 <TextView
-                    android:id="@+id/text_sub_region_value"
+                    android:id="@+id/text_official_name_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/text_Subregión"
@@ -87,7 +87,7 @@
                 android:text="Nombre nativo:"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:layout_below="@id/text_sub_region_value"
+                android:layout_below="@id/text_official_name_value"
                 android:layout_marginTop="8dp"
                 android:layout_marginStart="32dp"/>
 

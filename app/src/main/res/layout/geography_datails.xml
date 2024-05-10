@@ -81,27 +81,7 @@
                     android:textColor="@color/grey"
                     android:textSize="12sp" />
 
-            <TextView
-                android:id="@+id/text_native_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nombre nativo:"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:layout_below="@id/text_sub_region_value"
-                android:layout_marginTop="8dp"
-                android:layout_marginStart="32dp"/>
 
-                <TextView
-                    android:id="@+id/text_native_name_r"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/text_native_name"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginStart="32dp"
-                    android:text="Republica Moldova"
-                    android:textColor="@color/grey"
-                    android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/text_lat_long"
@@ -110,7 +90,7 @@
                 android:text="Latitud y longitud:"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:layout_below="@id/text_native_name_r"
+                android:layout_below="@id/text_sub_region_value"
                 android:layout_marginTop="8dp"
                 android:layout_marginStart="32dp"/>
 

@@ -2,6 +2,7 @@ package com.shipping.prueba_tecnica_movil.domain.model
 
 import com.shipping.prueba_tecnica_movil.data.database.entities.CountryEntity
 import com.shipping.prueba_tecnica_movil.data.model.CountryDto
+import com.shipping.prueba_tecnica_movil.data.model.DemonymDto
 import com.shipping.prueba_tecnica_movil.data.model.FlagsDto
 import com.shipping.prueba_tecnica_movil.data.model.NameDto
 import com.shipping.prueba_tecnica_movil.data.model.PostalCodeDto
@@ -39,14 +40,33 @@ data class Country(
     val postalCode: PostalCode,
     val positionCounter:Int,
     var statusExpandable:Boolean = false,
-): Serializable
+    val cca2: String,
+    val ccn3: String,
+    val cca3: String,
+    val cioc: String,
+    val demonyms: String,
+    val coatOfArms:String,
+    val car:String,
+
+    ): Serializable
+
+
 
 
 data class Name(
     val common: String = "",
-    val official: String = ""
+    val official: String = "",
+    val nativeName: NativeNameDto
+
+): Serializable
+data class NativeNameDto(
+    val ron: RonDto
 ): Serializable
 
+data class RonDto(
+    val official: String,
+    val common: String
+): Serializable
 data class CoatOfArms(
     val png: String = "",
     val svg: String = ""

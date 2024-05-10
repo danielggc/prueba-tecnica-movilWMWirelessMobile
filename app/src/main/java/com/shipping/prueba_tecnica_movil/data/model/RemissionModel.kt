@@ -41,6 +41,7 @@ data class CountryDto(
     val startOfWeek: String?,
     val capitalInfo: CapitalInfoDto?,
     val postalCode: PostalCodeDto?
+
 )
 
 data class NameDto(

@@ -22,13 +22,15 @@
         >
 
 
-
             <ImageView
-                android:layout_margin="10dp"
                 android:id="@+id/image_culture"
                 android:layout_width="78dp"
                 android:layout_height="33dp"
                 android:layout_centerHorizontal="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
                 android:src="@drawable/culture" />
             <TextView
                 android:id="@+id/text_flag"
@@ -40,17 +42,16 @@
                 android:layout_below="@id/image_culture"
                 android:layout_marginTop="8dp"
                 android:layout_marginStart="32dp"/>
-
-            <TextView
-                android:id="@+id/text_flag_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <ImageView
+                android:id="@+id/flag_country_value"
+                android:layout_width="78dp"
+                android:layout_height="33dp"
                 android:layout_below="@id/text_flag"
                 android:layout_marginTop="8dp"
                 android:layout_marginStart="32dp"
-                android:text="🇲🇩"
-                android:textColor="@color/grey"
-                android:textSize="12sp" />
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/flag" />
+
             <TextView
                 android:id="@+id/text_coat_of_arms"
                 android:layout_width="wrap_content"
@@ -58,7 +59,7 @@
                 android:text="Escudo de armas:"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:layout_below="@id/text_flag_value"
+                android:layout_below="@id/flag_country_value"
                 android:layout_marginTop="8dp"
                 android:layout_marginStart="32dp"/>
 
