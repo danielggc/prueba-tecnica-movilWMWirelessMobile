@@ -35,11 +35,19 @@ class InfoCountry :Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val buttonGeneralInformation = binding.root.findViewById<androidx.cardview.widget.CardView>(R.id.button_general_information)
+        val buttonGeneralInformation2 = binding.root.findViewById<androidx.cardview.widget.CardView>(R.id.button_geography_information)
+
         frameLayout = binding.root.findViewById( R.id.frame_layout_info )
         buttonGeneralInformation.setOnClickListener{
             Log.d("click ", "click!!!!! " )
 
             inflateLayout( R.layout.general_datails )
+        }
+
+        buttonGeneralInformation2.setOnClickListener{
+            Log.d("click ", "click!!!!! " )
+
+            inflateLayout( R.layout.geography_datails )
         }
 
 

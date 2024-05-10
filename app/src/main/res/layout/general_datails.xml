@@ -4,142 +4,235 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    >
-
-    <!-- Imagen de la bandera de Moldova -->
-
-    <ImageView
-        android:id="@+id/image_flag"
-        android:layout_width="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_details"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/map"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"/>
-
-    <!-- Detalles de la tarjeta -->
-
-        <androidx.cardview.widget.CardView
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="@color/sub_green">
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_margin="5dp"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="4dp"
-            app:cardBackgroundColor="@color/blue"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
 
-            >
-            <TextView
-                android:id="@+id/text_common_name"
-                android:layout_width="match_parent"
+            <!-- Imagen de la bandera de Moldova -->
+
+                <ImageView
+                    android:layout_margin="10dp"
+                    android:id="@+id/image_flag"
+                    android:layout_width="78dp"
+                    android:layout_height="33dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/flag" />
+
+            <!-- Detalles de la tarjeta -->
+
+
+                <TextView
+                    android:id="@+id/text_region"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/image_flag"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="32dp"
+                    android:text="Nombre común:"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+
+                <TextView
+                    android:id="@+id/text_region_r"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_region"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="32dp"
+                    android:text="Moldova"
+                    android:textColor="@color/grey"
+                    android:textSize="12sp" />
+
+                <TextView
+                android:id="@+id/text_Subregión"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nombre común: Moldova"
+                android:text="Nombre oficial:"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:layout_below="@id/image_flag"
-                android:layout_marginTop="16dp"
+                android:layout_below="@id/text_region_r"
+                android:layout_marginTop="8dp"
                 android:layout_marginStart="32dp"/>
-        </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/text_sub_region_r"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_Subregión"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="32dp"
+                    android:text="República de Moldova"
+                    android:textColor="@color/grey"
+                    android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/text_native_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nombre nativo:"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_below="@id/text_sub_region_r"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"/>
+
+                <TextView
+                    android:id="@+id/text_native_name_r"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_native_name"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="32dp"
+                    android:text="Republica Moldova"
+                    android:textColor="@color/grey"
+                    android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/text_country_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Código de país:"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_below="@id/text_native_name_r"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"/>
+
+                <TextView
+                    android:id="@+id/text_country_code_r"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_country_code"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="32dp"
+                    android:text="MD"
+                    android:textColor="@color/grey"
+                    android:textSize="12sp" />
 
 
-    <TextView
-        android:id="@+id/text_official_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nombre oficial: República de Moldova"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:layout_below="@id/text_common_name"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="32dp"/>
+            <TextView
+                android:id="@+id/text_numeric_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Código numérico de país:"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_below="@id/text_country_code_r"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"/>
 
-    <TextView
-        android:id="@+id/text_native_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nombre nativo: Republica Moldova"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:layout_below="@id/text_official_name"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="32dp"/>
+                <TextView
+                    android:id="@+id/text_numeric_code_r"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_numeric_code"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="32dp"
+                    android:text="498"
+                    android:textColor="@color/grey"
+                    android:textSize="12sp" />
 
-    <TextView
-        android:id="@+id/text_country_code"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Código de país: MD"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:layout_below="@id/text_native_name"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="32dp"/>
+            <TextView
+                android:id="@+id/text_coa_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Código de país en el COI:"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_below="@id/text_numeric_code_r"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"/>
+                <TextView
+                    android:id="@+id/text_coa_code_r"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_coa_code"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="32dp"
+                    android:text=" MDA"
+                    android:textColor="@color/grey"
+                    android:textSize="12sp" />
 
-    <TextView
-        android:id="@+id/text_numeric_code"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Código numérico de país: 498"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:layout_below="@id/text_country_code"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="32dp"/>
 
-    <TextView
-        android:id="@+id/text_coa_code"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Código de país en el COI: MDA"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:layout_below="@id/text_numeric_code"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="32dp"/>
+            <TextView
+                android:id="@+id/text_independence"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Independencia:"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_below="@id/text_coa_code_r"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"/>
+                <TextView
+                    android:id="@+id/text_independence_r"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_independence"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="32dp"
+                    android:text=" Verdadero"
+                    android:textColor="@color/grey"
+                    android:textSize="12sp" />
 
-    <TextView
-        android:id="@+id/text_independence"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Independencia: Verdadero"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:layout_below="@id/text_coa_code"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="32dp"/>
 
-    <TextView
-        android:id="@+id/text_state"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Estado: Asignado oficialmente"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:layout_below="@id/text_independence"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="32dp"/>
+            <TextView
+                android:id="@+id/text_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Estado:"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_below="@id/text_independence_r"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"/>
+                <TextView
+                    android:id="@+id/text_state_r"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_state"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="32dp"
+                    android:text="Asignado oficialmente"
+                    android:textColor="@color/grey"
+                    android:textSize="12sp" />
 
-    <TextView
-        android:id="@+id/text_un_member"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Miembro de las Naciones Unidas: Verdadero"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:layout_below="@id/text_state"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="32dp"/>
+            <TextView
+                android:id="@+id/text_un_member"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Miembro de las Naciones Unidas:"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_below="@id/text_state_r"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"/>
+                <TextView
+                    android:id="@+id/text_un_member_r"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_un_member"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="32dp"
+                    android:text="  Verdadero"
+                    android:textColor="@color/grey"
+                    android:textSize="12sp" />
 
-</RelativeLayout>
-
-</LinearLayout>
+         </RelativeLayout>
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
