@@ -5,8 +5,10 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.Embedded
 import com.shipping.prueba_tecnica_movil.domain.model.Country
+import kotlinx.serialization.json.Json
 import org.json.JSONObject
-
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.encodeToString
 @Entity(tableName = "country_table")
 
 data class CountryEntity(
@@ -57,15 +59,15 @@ fun Country.toDatabase(): CountryEntity {
         capital = capital.firstOrNull() ?: "",
         region = region,
         subregion = subregion,
-        languages = convertMapToString(languages),
+        languages = Json.encodeToString<Map<String,String>>(languages),
         latlng = latlng.joinToString(separator = ","),
         landlocked = landlocked,
         borders = borders.joinToString(separator = ","),
         area = area,
         flag = flag,
-        maps = convertMapToString(maps),
+        maps =  Json.encodeToString<Map<String,String>>(maps),
         population = population,
-        gini = convertMapToString(gini),
+        gini =  Json.encodeToString<Map<String,Double>>(gini),
         fifa = fifa,
         timezones = timezones.joinToString(separator = ","),
         continents = continents.joinToString(separator = ","),
@@ -77,7 +79,4 @@ fun Country.toDatabase(): CountryEntity {
         positionCounter = positionCounter
     )
 
-}
-private fun convertMapToString(map: Map<*, *>): String {
-    return JSONObject(map).toString()
 }

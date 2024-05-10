@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="@color/sub_green">
+        <RelativeLayout
+            android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+
+
+            <ImageView
+                android:layout_margin="10dp"
+                android:id="@+id/image_culture"
+                android:layout_width="78dp"
+                android:layout_height="33dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/culture" />
+            <TextView
+                android:id="@+id/text_flag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bandera:"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_below="@id/image_culture"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"/>
+
+            <TextView
+                android:id="@+id/text_flag_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_flag"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"
+                android:text="🇲🇩"
+                android:textColor="@color/grey"
+                android:textSize="12sp" />
+            <TextView
+                android:id="@+id/text_coat_of_arms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Escudo de armas:"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_below="@id/text_flag_value"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"/>
+
+            <TextView
+                android:id="@+id/text_coat_of_arms_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_coat_of_arms"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"
+                android:text="Ver en PNG / Ver en SVG"
+                android:textColor="@color/grey"
+                android:textSize="12sp" />
+            <TextView
+                android:id="@+id/text_map_links"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enlaces a mapas:"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_below="@id/text_coat_of_arms_value"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"/>
+
+            <TextView
+                android:id="@+id/text_map_links_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_map_links"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"
+                android:text="Google Maps / OpenStreetMaps"
+                android:textColor="@color/grey"
+                android:textSize="12sp" />
+            <TextView
+                android:id="@+id/text_country_codes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Códigos de país y de automóviles:"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_below="@id/text_map_links_value"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"/>
+
+            <TextView
+                android:id="@+id/text_country_codes_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_country_codes"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"
+                android:text="MD"
+                android:textColor="@color/grey"
+                android:textSize="12sp" />
+            <TextView
+                android:id="@+id/text_road_side"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lado de la carretera:"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_below="@id/text_country_codes_value"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"/>
+
+            <TextView
+                android:id="@+id/text_road_side_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_road_side"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"
+                android:text="Derecha"
+                android:textColor="@color/grey"
+                android:textSize="12sp" />
+            <TextView
+                android:id="@+id/text_postal_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Formato de código postal:"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_below="@id/text_road_side_value"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"/>
+
+            <TextView
+                android:id="@+id/text_postal_code_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_postal_code"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"
+                android:text="MD-#### (Regex: ^(?:MD)*(\d{4})$)"
+                android:textColor="@color/grey"
+                android:textSize="12sp" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="16dp"
+                android:layout_below="@id/text_postal_code_value"
+                />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

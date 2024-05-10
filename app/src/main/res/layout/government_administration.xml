@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="@color/sub_green">
+        <RelativeLayout
+            android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+
+
+            <ImageView
+                android:layout_margin="10dp"
+                android:id="@+id/image_Government"
+                android:layout_width="78dp"
+                android:layout_height="33dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/government" />
+
+            <TextView
+                android:id="@+id/text_capital"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Capital:"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_below="@id/image_Government"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"/>
+
+            <TextView
+                android:id="@+id/text_capital_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_capital"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"
+                android:text="Chișinău"
+                android:textColor="@color/grey"
+                android:textSize="12sp" />
+            <TextView
+                android:id="@+id/text_language"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Idioma oficial:"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_below="@id/text_capital_value"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"/>
+
+            <TextView
+                android:id="@+id/text_language_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_language"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"
+                android:text="Rumano"
+                android:textColor="@color/grey"
+                android:textSize="12sp" />
+            <TextView
+                android:id="@+id/text_currency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Moneda:"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_below="@id/text_language_value"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"/>
+
+            <TextView
+                android:id="@+id/text_currency_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_currency"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"
+                android:text="Leu moldavo (MDL)"
+                android:textColor="@color/grey"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/text_timezone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Zona horaria:"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_below="@id/text_currency_value"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"/>
+
+            <TextView
+                android:id="@+id/text_timezone_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_timezone"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"
+                android:text="UTC+02:00"
+                android:textColor="@color/grey"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/text_start_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Día de inicio de la semana:"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_below="@id/text_timezone_value"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"/>
+
+            <TextView
+                android:id="@+id/text_start_day_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_start_day"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"
+                android:text="Lunes"
+                android:textColor="@color/grey"
+                android:textSize="12sp" />
+
+
+            <TextView
+                android:id="@+id/text_fifa_member"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Miembro de la FIFA:"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_below="@id/text_start_day_value"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"/>
+
+            <TextView
+                android:id="@+id/text_fifa_member_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_fifa_member"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"
+                android:text="MDA"
+                android:textColor="@color/grey"
+                android:textSize="12sp" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="16dp"
+                android:layout_below="@id/text_fifa_member_value"
+                />
+         </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

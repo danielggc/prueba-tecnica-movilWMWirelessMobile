@@ -3,7 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav"
-    app:startDestination="@id/infoCountry">
+    app:startDestination="@id/blankFragment2">
+    <fragment
+        android:id="@+id/blankFragment22"
+        android:name="com.shipping.prueba_tecnica_movil.ui.view.Login"
+        android:label="fragment_blank2"
+        tools:layout="@layout/login" >
+        <action
+            android:id="@+id/action_blankFragment22_to_blankFragment2"
+            app:destination="@id/blankFragment2" />
+    </fragment>
+
 
     <fragment
         android:id="@+id/blankFragment2"
@@ -15,26 +25,27 @@
             app:destination="@id/blankFragment22" />
         <action
             android:id="@+id/action_blankFragment2_to_infoCountry"
-            app:destination="@id/infoCountry" />
+            app:destination="@id/infoCountry" >
+            />
+
+        </action>
     </fragment>
 
-    <fragment
-        android:id="@+id/blankFragment22"
-        android:name="com.shipping.prueba_tecnica_movil.ui.view.Login"
-        android:label="fragment_blank2"
-        tools:layout="@layout/login" >
-        <action
-            android:id="@+id/action_blankFragment22_to_blankFragment2"
-            app:destination="@id/blankFragment2" />
-    </fragment>
+
     <fragment
         android:id="@+id/infoCountry"
         android:name="com.shipping.prueba_tecnica_movil.ui.view.InfoCountry"
         android:label="fragment_blank22"
         tools:layout="@layout/info_country" >
+
         <action
-            android:id="@+id/action_blankFragment22_to_blankFragment2"
+            android:id="@+id/action_infoCountry_to_blankFragment2"
             app:destination="@id/blankFragment2" />
+        <argument
+            android:name="info_country_data"
+            app:argType="com.shipping.prueba_tecnica_movil.domain.model.Country"
+           />
+        />
     </fragment>
 
 

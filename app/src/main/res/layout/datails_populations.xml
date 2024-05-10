@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="@color/sub_green">
+        <RelativeLayout
+            android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+
+            <ImageView
+                android:id="@+id/image_populations"
+                android:layout_width="78dp"
+                android:layout_height="33dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/populations" />
+
+            <TextView
+                android:id="@+id/text_population"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Población:"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_below="@id/image_populations"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"/>
+
+            <TextView
+                android:id="@+id/text_population_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_population"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"
+                android:text="2,617,820"
+                android:textColor="@color/grey"
+                android:textSize="12sp" />
+
+
+            <TextView
+                android:id="@+id/text_gini"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gini (coeficiente de desigualdad):"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_below="@id/text_population_value"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"/>
+
+            <TextView
+                android:id="@+id/text_gini_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_gini"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"
+                android:text="25.7 (2018)"
+                android:textColor="@color/grey"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/text_demonyms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gentilicios:"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_below="@id/text_gini_value"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"/>
+
+            <TextView
+                android:id="@+id/text_demonyms_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_demonyms"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"
+                android:text="Moldavo (masculino y femenino)"
+                android:textColor="@color/grey"
+                android:textSize="12sp" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="16dp"
+                android:layout_below="@id/text_demonyms_value"
+                />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -48,7 +48,7 @@
 
 
                 <TextView
-                    android:id="@+id/text_region_r"
+                    android:id="@+id/text_region_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/text_region"
@@ -65,12 +65,12 @@
                 android:text="Nombre oficial:"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:layout_below="@id/text_region_r"
+                android:layout_below="@id/text_region_value"
                 android:layout_marginTop="8dp"
                 android:layout_marginStart="32dp"/>
 
                 <TextView
-                    android:id="@+id/text_sub_region_r"
+                    android:id="@+id/text_sub_region_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/text_Subregión"
@@ -87,7 +87,7 @@
                 android:text="Nombre nativo:"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:layout_below="@id/text_sub_region_r"
+                android:layout_below="@id/text_sub_region_value"
                 android:layout_marginTop="8dp"
                 android:layout_marginStart="32dp"/>
 
@@ -114,7 +114,7 @@
                 android:layout_marginStart="32dp"/>
 
                 <TextView
-                    android:id="@+id/text_country_code_r"
+                    android:id="@+id/text_country_code_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/text_country_code"
@@ -132,12 +132,12 @@
                 android:text="Código numérico de país:"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:layout_below="@id/text_country_code_r"
+                android:layout_below="@id/text_country_code_value"
                 android:layout_marginTop="8dp"
                 android:layout_marginStart="32dp"/>
 
                 <TextView
-                    android:id="@+id/text_numeric_code_r"
+                    android:id="@+id/text_numeric_code_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/text_numeric_code"
@@ -154,7 +154,7 @@
                 android:text="Código de país en el COI:"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:layout_below="@id/text_numeric_code_r"
+                android:layout_below="@id/text_numeric_code_value"
                 android:layout_marginTop="8dp"
                 android:layout_marginStart="32dp"/>
                 <TextView
@@ -180,7 +180,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginStart="32dp"/>
                 <TextView
-                    android:id="@+id/text_independence_r"
+                    android:id="@+id/text_independence_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/text_independence"
@@ -198,11 +198,11 @@
                 android:text="Estado:"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:layout_below="@id/text_independence_r"
+                android:layout_below="@id/text_independence_value"
                 android:layout_marginTop="8dp"
                 android:layout_marginStart="32dp"/>
                 <TextView
-                    android:id="@+id/text_state_r"
+                    android:id="@+id/text_state_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/text_state"
@@ -219,7 +219,7 @@
                 android:text="Miembro de las Naciones Unidas:"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:layout_below="@id/text_state_r"
+                android:layout_below="@id/text_state_value"
                 android:layout_marginTop="8dp"
                 android:layout_marginStart="32dp"/>
                 <TextView
@@ -232,6 +232,11 @@
                     android:text="  Verdadero"
                     android:textColor="@color/grey"
                     android:textSize="12sp" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="16dp"
+                android:layout_below="@id/text_un_member_r"
+                />
 
          </RelativeLayout>
     </androidx.cardview.widget.CardView>

@@ -1,12 +1,15 @@
 package com.shipping.prueba_tecnica_movil.domain.model
 
-import com.google.gson.JsonObject
 import com.shipping.prueba_tecnica_movil.data.database.entities.CountryEntity
 import com.shipping.prueba_tecnica_movil.data.model.CountryDto
 import com.shipping.prueba_tecnica_movil.data.model.FlagsDto
 import com.shipping.prueba_tecnica_movil.data.model.NameDto
 import com.shipping.prueba_tecnica_movil.data.model.PostalCodeDto
+import java.io.Serializable
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.json.Json
 import org.json.JSONObject
+
 
 data class Country(
     val name: Name,
@@ -36,27 +39,25 @@ data class Country(
     val postalCode: PostalCode,
     val positionCounter:Int,
     var statusExpandable:Boolean = false,
-)
+): Serializable
 
 
 data class Name(
     val common: String = "",
     val official: String = ""
-)
+): Serializable
 
 data class CoatOfArms(
     val png: String = "",
     val svg: String = ""
-)
-
+): Serializable
 data class CapitalInfo(
     val latlng: List<Double> = emptyList()
-)
-
+): Serializable
 data class PostalCode(
     val format: String = "",
     val regex: String = ""
-)
+): Serializable
 
 
 
@@ -150,7 +151,7 @@ fun CountryEntity.toDomain(): Country {
         flag = flag,
         maps = convertStringToMap(maps),
         population = population,
-        gini = convertStringToMap(gini).mapValues { entry: Map.Entry<String, String> ->  entry.value.toDouble() },
+        gini = Json.decodeFromString<Map<String,Double>>(gini),
         fifa = fifa,
         timezones = timezones.split(","),
         continents = continents.split(","),
@@ -166,25 +167,7 @@ private fun capitalInfoEntityToDomain(  capitalInfoLatlng :String ):CapitalInfo 
           CapitalInfo( latlng = capitalInfoLatlng.split(",").map { it.toDouble() } )
     else  CapitalInfo(latlng =  emptyList() )
 
-private fun convertStringToMap(string: String): Map<String, String> {
-    val jsonObject = JSONObject(string)
-    val map = mutableMapOf<String, String>()
-    val keys = jsonObject.keys()
-    while (keys.hasNext()) {
-        val key = keys.next()
-        map[key] = jsonObject.getString(key)
-    }
-    return map
-}
+private fun convertStringToMap(data: String): Map<String, String> =
+ Json.decodeFromString<Map<String,String>>(data)
 
-fun JSONObject.toMap(): Map<String, String> {
-    val map = mutableMapOf<String, String>()
-    val keys = this.keys()
-    while (keys.hasNext()) {
-        val key = keys.next()
-        val value = this.getString(key)
-        map[key] = value
-    }
-    return map
-}
 

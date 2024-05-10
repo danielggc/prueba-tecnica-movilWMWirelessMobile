@@ -14,7 +14,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.shipping.prueba_tecnica_movil.R
 import com.shipping.prueba_tecnica_movil.domain.model.Country
+import com.shipping.prueba_tecnica_movil.ui.view.HomeDirections
 import com.shipping.prueba_tecnica_movil.ui.viewmodel.RemisionViewModel
+import kotlinx.serialization.json.Json
+import org.json.JSONObject
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.encodeToString
 
 class RecyclerAdapterDeliveryInfo (private val remisionViewModel:RemisionViewModel): RecyclerView.Adapter<RecyclerAdapterDeliveryInfo.ViewHolder>() {
 
@@ -57,8 +62,10 @@ class RecyclerAdapterDeliveryInfo (private val remisionViewModel:RemisionViewMod
             Log.d("MAP", "RecyclerAdapterDeliveryInfo: click ")
             this.navController?.let {
                     navController ->
+
+                val dd = HomeDirections.actionBlankFragment2ToInfoCountry( holder.data )
                 remisionViewModel.enviarRemision( this.deliveryInfo.get(position) )
-               // navController.navigate(R.id.action_blankFragment2_to_view_maps_shipping)
+                navController.navigate( dd )
             }
 
         }
@@ -93,10 +100,11 @@ class RecyclerAdapterDeliveryInfo (private val remisionViewModel:RemisionViewMod
         private var itemInfoAreaCountryR                        = view.findViewById(R.id.item_info_area_country_r) as TextView
         private var itemInfoLanguagesR                          = view.findViewById(R.id.item_info_languages_r) as TextView
         private var itemInfoContinentsCountryR                  = view.findViewById(R.id.item_info_continents_country_r) as TextView
-        val itemInfoMoreInformationIcon                 = view.findViewById<ImageButton>(R.id.item_info_more_information_icon)
+        val itemInfoMoreInformationIcon                         = view.findViewById<ImageButton>(R.id.item_info_more_information_icon)
         private val itemInfoFlagsCountry                        = view.findViewById<ImageView>(R.id.item_info_flags_country)
-
+        lateinit var data :Country
         fun bind(remissionData:Country, context: Context){
+            data = remissionData
             if(remissionData.name.official.length > 22 )
                 itemInfoOfficialName.text                  = remissionData.name.official.substring(0,20)+"..."
             else
@@ -110,6 +118,7 @@ class RecyclerAdapterDeliveryInfo (private val remisionViewModel:RemisionViewMod
                 .load(remissionData.flags)
                 .centerCrop()
                 .into(itemInfoFlagsCountry)
+
         }
 
     }
