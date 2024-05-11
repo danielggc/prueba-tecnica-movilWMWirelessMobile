@@ -1,5 +1,6 @@
 package com.shipping.prueba_tecnica_movil.ui.view
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,10 +9,15 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.Target
 import com.shipping.prueba_tecnica_movil.databinding.InfoCountryBinding
 import com.shipping.prueba_tecnica_movil.R
 import com.shipping.prueba_tecnica_movil.domain.model.Country
@@ -39,7 +45,7 @@ class InfoCountry :Fragment() {
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
+        binding.loadingHome.isVisible = false
 
         val navController = findNavController()
         val args:InfoCountryArgs by navArgs()
@@ -169,17 +175,69 @@ class InfoCountry :Fragment() {
     }
 
     fun setValueCulture( info: Country ) {
+        var state:Boolean = false
+        binding.loadingHome.isVisible = true
         val textFlag              = binding.root.findViewById<ImageView>(R.id.flag_country_value)
         val flagCoatArmsValue: ImageView   = binding.root.findViewById(R.id.flag_coat_arms_value)
 
         Glide.with(  this )
             .load(info.flags)
             .centerCrop()
+            .listener(object : RequestListener<Drawable> {
+
+                override fun onLoadFailed(
+                    e: GlideException?,
+                    model: Any?,
+                    target: Target<Drawable>?,
+                    isFirstResource: Boolean
+                ): Boolean {
+                    return false
+                }
+
+                override fun onResourceReady(
+                    resource: Drawable?,
+                    model: Any?,
+                    target: Target<Drawable>?,
+                    dataSource: DataSource?,
+                    isFirstResource: Boolean
+                ): Boolean {
+                    state = true
+                    return  false
+                }
+            }
+            )
             .into(textFlag)
+
         Glide.with(  this )
             .load(info.coatOfArms)
             .centerCrop()
+
+            .listener(object : RequestListener<Drawable> {
+
+                    override fun onLoadFailed(
+                        e: GlideException?,
+                        model: Any?,
+                        target: Target<Drawable>?,
+                        isFirstResource: Boolean
+                    ): Boolean {
+                        return false
+                    }
+
+                    override fun onResourceReady(
+                        resource: Drawable?,
+                        model: Any?,
+                        target: Target<Drawable>?,
+                        dataSource: DataSource?,
+                        isFirstResource: Boolean
+                    ): Boolean {
+                        if( state )
+                            binding.loadingHome.isVisible =false
+                        return  false
+                    }
+                }
+            )
             .into(flagCoatArmsValue)
+
         val textMapLinksValue: TextView     = binding.root.findViewById(R.id.text_map_links_value)
         val textCountryCodesValue: TextView = binding.root.findViewById(R.id.text_country_codes_value)
         val textRoadSideValue: TextView     = binding.root.findViewById(R.id.text_road_side_value)

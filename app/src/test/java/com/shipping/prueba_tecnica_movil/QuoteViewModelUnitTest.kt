@@ -1,19 +1,5 @@
 package com.shipping.prueba_tecnica_movil
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.shipping.prueba_tecnica_movil.domain.GetRemissionModelUseCase
-import com.shipping.prueba_tecnica_movil.domain.GetRandomRemissionUseCase
-import com.shipping.prueba_tecnica_movil.ui.viewmodel.QuoteViewModel
-import io.mockk.MockKAnnotations
-import io.mockk.coEvery
-import io.mockk.impl.annotations.RelaxedMockK
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.*
-import org.junit.After
-import org.junit.Before
-import org.junit.Rule
-import org.junit.Test
 /*
 @ExperimentalCoroutinesApi
 class QuoteViewModelUnitTest {

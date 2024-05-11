@@ -15,12 +15,12 @@ class GetQuotesUseCaseTest {
     @RelaxedMockK
     private lateinit var remissionRepository: RemissionRepository
 
-    lateinit var getQuotesUseCase: GetRemissionModelUseCase
+    lateinit var getQuotesUseCase: GetCountryModelUseCase
 
     @Before
     fun onBefore() {
         MockKAnnotations.init(this)
-        getQuotesUseCase = GetRemissionModelUseCase(remissionRepository)
+        getQuotesUseCase = GetCountryModelUseCase(remissionRepository)
     }
 
     @Test

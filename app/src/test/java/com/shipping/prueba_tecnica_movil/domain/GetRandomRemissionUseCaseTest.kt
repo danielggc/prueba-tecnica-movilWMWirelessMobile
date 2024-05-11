@@ -14,12 +14,12 @@ class GetRandomRemissionUseCaseTest {
     @RelaxedMockK
     private lateinit var remissionRepository: RemissionRepository
 
-    lateinit var getRandomRemissionUseCase: GetRandomRemissionUseCase
+    lateinit var getRandomRemissionUseCase: GetRandomCountryUseCase
 
     @Before
     fun onBefore() {
         MockKAnnotations.init(this)
-        getRandomRemissionUseCase = GetRandomRemissionUseCase(remissionRepository)
+        getRandomRemissionUseCase = GetRandomCountryUseCase(remissionRepository)
     }
 
     @Test

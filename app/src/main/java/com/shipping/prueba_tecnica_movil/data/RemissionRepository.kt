@@ -1,7 +1,7 @@
 package com.shipping.prueba_tecnica_movil.data
 
 import android.util.Log
-import com.shipping.prueba_tecnica_movil.data.database.dao.RemissionDao
+import com.shipping.prueba_tecnica_movil.data.database.dao.CountryDao
 import com.shipping.prueba_tecnica_movil.data.database.entities.CountryEntity
 import com.shipping.prueba_tecnica_movil.data.database.entities.toDatabase
 import com.shipping.prueba_tecnica_movil.data.model.ApiResponse
@@ -14,7 +14,7 @@ import kotlinx.coroutines.withContext
 
 class RemissionRepository @Inject constructor(
     private val api: QuoteService,
-    private val quoteDao: RemissionDao
+    private val quoteDao: CountryDao
 ) {
 
     suspend fun getAllCountriesFromApi(): List<Country> {

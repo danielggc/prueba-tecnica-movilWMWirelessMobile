@@ -9,7 +9,7 @@
 
 
     @Dao
-    interface RemissionDao {
+    interface CountryDao {
 
         @Query("SELECT * FROM country_table ORDER BY name_common DESC")
         suspend fun getAllCountries():List<CountryEntity>

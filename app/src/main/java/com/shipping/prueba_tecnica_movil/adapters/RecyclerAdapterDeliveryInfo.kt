@@ -16,10 +16,6 @@ import com.shipping.prueba_tecnica_movil.R
 import com.shipping.prueba_tecnica_movil.domain.model.Country
 import com.shipping.prueba_tecnica_movil.ui.view.HomeDirections
 import com.shipping.prueba_tecnica_movil.ui.viewmodel.RemisionViewModel
-import kotlinx.serialization.json.Json
-import org.json.JSONObject
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.encodeToString
 
 class RecyclerAdapterDeliveryInfo (private val remisionViewModel:RemisionViewModel): RecyclerView.Adapter<RecyclerAdapterDeliveryInfo.ViewHolder>() {
 
@@ -103,19 +99,19 @@ class RecyclerAdapterDeliveryInfo (private val remisionViewModel:RemisionViewMod
         val itemInfoMoreInformationIcon                         = view.findViewById<ImageButton>(R.id.item_info_more_information_icon)
         private val itemInfoFlagsCountry                        = view.findViewById<ImageView>(R.id.item_info_flags_country)
         lateinit var data :Country
-        fun bind(remissionData:Country, context: Context){
-            data = remissionData
-            if(remissionData.name.official.length > 22 )
-                itemInfoOfficialName.text                  = remissionData.name.official.substring(0,20)+"..."
+        fun bind(CountryData:Country, context: Context){
+            data = CountryData
+            if(CountryData.name.official.length > 22 )
+                itemInfoOfficialName.text                  = CountryData.name.official.substring(0,20)+"..."
             else
-                itemInfoOfficialName.text                  = remissionData.name.official
-            itemInfoCapital.text                       = remissionData.capital.toString()
-            itemInfoCurrenciesCountry.text             = remissionData.currencies.toString()
-            itemInfoAreaCountryR.text                  = remissionData.area.toString()
-            itemInfoLanguagesR.text                    = remissionData.languages.values.toString()
-            itemInfoContinentsCountryR.text            = remissionData.subregion
+                itemInfoOfficialName.text                  = CountryData.name.official
+            itemInfoCapital.text                       = CountryData.capital.toString()
+            itemInfoCurrenciesCountry.text             = CountryData.currencies.toString()
+            itemInfoAreaCountryR.text                  = CountryData.area.toString()
+            itemInfoLanguagesR.text                    = CountryData.languages.values.toString()
+            itemInfoContinentsCountryR.text            = CountryData.subregion
             Glide.with(context)
-                .load(remissionData.flags)
+                .load(CountryData.flags)
                 .centerCrop()
                 .into(itemInfoFlagsCountry)
 

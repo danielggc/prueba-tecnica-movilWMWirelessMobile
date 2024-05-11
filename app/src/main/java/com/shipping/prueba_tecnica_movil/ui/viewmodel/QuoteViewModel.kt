@@ -6,8 +6,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
-import com.shipping.prueba_tecnica_movil.domain.GetRemissionModelUseCase
-import com.shipping.prueba_tecnica_movil.domain.GetRandomRemissionUseCase
+import com.shipping.prueba_tecnica_movil.domain.GetCountryModelUseCase
+import com.shipping.prueba_tecnica_movil.domain.GetRandomCountryUseCase
 import com.shipping.prueba_tecnica_movil.domain.model.Country
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -15,8 +15,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class QuoteViewModel @Inject constructor(
-    private val getQuotesUseCase: GetRemissionModelUseCase,
-    private val getRandomRemissionUseCase: GetRandomRemissionUseCase,
+    private val getQuotesUseCase: GetCountryModelUseCase,
+    private val getRandomRemissionUseCase: GetRandomCountryUseCase,
 
     ) : ViewModel() {
 

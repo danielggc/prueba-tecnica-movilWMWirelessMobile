@@ -25,7 +25,7 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideQuoteApiClient(retrofit: Retrofit):CountryApiClient{
+    fun provideCountryApiClient(retrofit: Retrofit):CountryApiClient{
         return retrofit.create(CountryApiClient::class.java)
     }
 }

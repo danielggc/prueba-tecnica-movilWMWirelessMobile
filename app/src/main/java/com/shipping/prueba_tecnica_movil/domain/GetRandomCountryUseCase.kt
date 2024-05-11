@@ -5,7 +5,7 @@ import com.shipping.prueba_tecnica_movil.data.RemissionRepository
 import com.shipping.prueba_tecnica_movil.domain.model.Country
 import javax.inject.Inject
 
-class GetRandomRemissionUseCase @Inject constructor(private val repository: RemissionRepository) {
+class GetRandomCountryUseCase @Inject constructor(private val repository: RemissionRepository) {
 
 
     suspend fun getCountriesInBatches(pageSize: Int, offset: Int ) :List<Country>{

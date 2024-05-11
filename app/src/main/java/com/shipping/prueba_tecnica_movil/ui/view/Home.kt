@@ -89,7 +89,7 @@ class Home : Fragment() {
                 currentPage = 0
                 initDataIntoLIst()
             }
-            binding.loading.isVisible  = it
+            binding.loadingHome.isVisible  = it
         })
         val navController = findNavController()
 

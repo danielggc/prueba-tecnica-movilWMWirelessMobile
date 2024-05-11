@@ -128,7 +128,7 @@
 
 
     <ProgressBar
-        android:id="@+id/loading"
+        android:id="@+id/loading_home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"

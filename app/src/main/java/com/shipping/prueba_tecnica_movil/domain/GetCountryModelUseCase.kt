@@ -7,7 +7,7 @@ import com.shipping.prueba_tecnica_movil.domain.model.Country
 import java.lang.Exception
 import javax.inject.Inject
 
-class GetRemissionModelUseCase @Inject constructor(private val repository: RemissionRepository) {
+class GetCountryModelUseCase @Inject constructor(private val repository: RemissionRepository) {
     suspend operator fun invoke():List<Country>{
 
         try {
