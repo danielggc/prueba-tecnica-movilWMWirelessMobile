@@ -1,26 +1,29 @@
 # Readme de la Aplicación Coordinadora
 
 ## Introducción
-
-Esta aplicación, denominada "Coordinadora", ha sido desarrollada como parte de la prueba de conocimiento en Android para el equipo de proyectos y operaciones de Coordinadora merCantil. La aplicación está diseñada para funcionar en dispositivos Android nativos con un sistema operativo mínimo de Android 8 hasta Android 14. A continuación, se detallan las características y funcionalidades implementadas en la aplicación:
+Este proyecto es una aplicación Android desarrollada en Kotlin que muestra una lista de países utilizando la API de Restcountries. La aplicación cuenta con funcionalidades básicas como búsqueda, visualización de la lista de países, visualización de resultados de la búsqueda y detalles del país,Esta aplicación, denominada "search countries", ha sido desarrollada como parte de la prueba de conocimiento en Android para el equipo de proyectos y operaciones de wireless & movil merCantil. La aplicación está diseñada para funcionar en dispositivos Android nativos con un sistema operativo mínimo de Android 8 hasta Android 14. A continuación, se detallan las características y funcionalidades implementadas en la aplicación:
 
 ## Características
 
-- **Arquitectura**: La aplicación está desarrollada siguiendo los principios de arquitectura MVP (Modelo-Vista-Presentador) y MVVM (Modelo-Vista-ViewModel).
+- **Arquitectura**: La aplicación está desarrollada siguiendo los principios de arquitectura  MVVM (Modelo-Vista-ViewModel).
 - **Base de datos local**: Se utiliza SQLite y Room Database para el manejo de la base de datos local.
 - **Librerías para peticiones HTTP**: Se hacen peticiones HTTP utilizando librerías como Retrofit.
-- **Inyección de dependencias**: Se implementa la inyección de dependencias utilizando Dagger, Dagger 2 o Hilt.
-- **Lenguaje de programación**: La aplicación puede desarrollarse tanto en Java como en Kotlin.
-- **RxJava**: Si se desarrolla en Java, se trabaja con RxJava.
+- **Inyección de dependencias**: Se implementa la inyección de dependencias utilizando Dagger.
+- **Lenguaje de programación**: La aplicación esta en Kotlin.
 - **Firebase**: Se utilizan servicios de Firebase para la autenticación de usuarios y el almacenamiento de datos.
 
 ## Pantallas
 
+![Captura de pantalla 1](Screenshot_2024-05-11-14-13-35-123_com.cursokotlin.mvvmexample.jpg)
+![Captura de pantalla 2](Screenshot_2024-05-11-14-13-59-913_com.cursokotlin.mvvmexample.jpg)
+![Captura de pantalla 3](Screenshot_2024-05-11-14-14-08-110_com.cursokotlin.mvvmexample.jpg)
+![Captura de pantalla 4](Screenshot_2024-05-11-14-14-16-135_com.cursokotlin.mvvmexample.jpg)
+ video de la aplicacion : [https://youtu.be/r2jdqWoa0-o?feature=shared]
 ### Pantalla de Login
 
 La pantalla de inicio de sesión presenta los siguientes elementos:
 
-- Título: "COORDINADORA".
+- Título: "Country".
 - Mensaje de bienvenida.
 - Campos de entrada para el código de empleado y el código PIN.
 
@@ -33,7 +36,7 @@ La pantalla de inicio de sesión presenta los siguientes elementos:
 En esta pantalla, se muestra la carga de trabajo en forma de tarjetas, obtenida de un servicio web. El contenido de las tarjetas se muestra como se especifica en el prototipo.
 
 **Funcionalidades**:
-- El menú desplegable en la esquina superior derecha ofrece opciones como recargar la lista de carga de trabajo, reordenar la carga y cerrar sesión.
+- El menú desplegable en la esquina superior derecha ofrece opciones como recargar la lista de carga de paises ,  y cerrar sesión.
 - Al expandir una tarjeta, se puede acceder a una pantalla en orientación landscape con un mapa que muestra la ubicación de la guía seleccionada.
 
 ## Implementación y Librerías Utilizadas
@@ -44,7 +47,6 @@ La aplicación se desarrolló utilizando Kotlin y siguiendo el patrón de diseñ
 - Dagger/Hilt para la inyección de dependencias.
 - Room para la base de datos local.
 - Firebase Authentication, Firestore, Database y Storage para la autenticación de usuarios y el almacenamiento de datos.
-- Google Maps para la visualización de mapas.
 
 ## Implementación de Inyección de Dependencias
 
@@ -54,19 +56,10 @@ Se ha realizado la inyección de dependencias utilizando Dagger/Hilt, lo que ha 
 
 - **Implementación Completa de Funcionalidades**: La aplicación ha sido implementada en su totalidad, cumpliendo con todos los requisitos especificados en la prueba. Sin embargo, se debe tener en cuenta que una parte del diseño frontend puede requerir ajustes adicionales para su completa finalización.
 
-- **Pantalla de Mapa en Orientación Landscape**: Se ha configurado la pantalla de mapa para mantenerse en modo landscape al expandir una tarjeta desde la pantalla de carga de trabajo. Esto garantiza una visualización óptima de la ubicación de la guía seleccionada en el mapa, mejorando la experiencia del usuario.
+- **Pantalla de Mapa en Orientación Landscape**: Se ha configurado la pantalla de mapa para mantenerse en modo landscape al expandir una tarjeta desde la pantalla de carga de trabajo. Esto garantiza una visualización óptima de la informacion de la guía seleccionada en el  icon, mejorando la experiencia del usuario.
 
 Para cualquier consulta adicional o retroalimentación, no dudes en contactar al equipo de desarrollo.
 
-¡Gracias por tu colaboración y por utilizar la aplicación Coordinadora!
+¡Gracias por tu colaboración y por utilizar la aplicación test entrevista!
 
 
-
-![Captura de pantalla 1](Screenshot_2024-02-26-15-01-04-493_com.cursokotlin.mvvmexample.jpg)
-![Captura de pantalla 2](Screenshot_2024-02-26-15-01-36-155_com.cursokotlin.mvvmexample.jpg)
-![Captura de pantalla 3](Screenshot_2024-02-26-15-02-24-077_com.cursokotlin.mvvmexample.jpg)
-![Captura de pantalla 4](Screenshot_2024-02-26-15-01-21-817_com.cursokotlin.mvvmexample.jpg)
-![Captura de pantalla 5](Screenshot_2024-02-26-15-01-47-145_com.cursokotlin.mvvmexample.jpg)
-![Captura de pantalla 6](Screenshot_2024-02-26-15-02-26-914_com.cursokotlin.mvvmexample.jpg)
-![Captura de pantalla 7](Screenshot_2024-02-26-15-01-29-926_com.cursokotlin.mvvmexample.jpg)
-![Captura de pantalla 8](Screenshot_2024-02-26-15-01-57-515_com.cursokotlin.mvvmexample.jpg)
