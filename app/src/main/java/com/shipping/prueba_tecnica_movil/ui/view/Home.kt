@@ -88,6 +88,7 @@ class Home : Fragment() {
                 mAdapter.clear()
                 currentPage = 0
                 initDataIntoLIst()
+
             }
             binding.loadingHome.isVisible  = it
         })
@@ -173,14 +174,7 @@ class Home : Fragment() {
                     quoteViewModel.onCreate()
                     true
                 }
-                R.id.home_reorder_load_home-> {
-                    quoteViewModel.isLoading.observe(viewLifecycleOwner, Observer {
-                        if (!it) {
-                           // findNavController().navigate(R.id.action_blankFragment2_to_blankFragment3)
-                        }
-                    })
-                    true
-                }
+
                 R.id.menu_sing_out_home-> {
                     mAdapter.clear()
                     findNavController().navigate(R.id.action_blankFragment2_to_blankFragment22)
@@ -228,6 +222,12 @@ class Home : Fragment() {
         dd.observe(viewLifecycleOwner) { remisions ->
             Log.d("GETDATAVIEW", "onScrolled: " + remisions)
             remisions.map { mAdapter.add(it) }
+            if( mAdapter.getSizeList() == 0 ){
+                mAdapter.clear()
+                currentPage = 0
+                quoteViewModel.onCreate()
+
+            }
         }
         currentPage = 5
     }
