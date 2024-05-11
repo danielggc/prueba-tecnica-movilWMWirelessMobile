@@ -32,7 +32,7 @@ class RecyclerAdapterDeliveryInfo (private val remisionViewModel:RemisionViewMod
         deliveryInfo.clear()
         notifyDataSetChanged()
     }
-
+    fun getSizeList():Int = deliveryInfo.size
     fun add(newDeliveryInfo: Country) {
         val existingItem = deliveryInfo.find { it.name == newDeliveryInfo.name }
         if (existingItem == null) {

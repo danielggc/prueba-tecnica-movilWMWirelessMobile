@@ -22,6 +22,7 @@ import com.shipping.prueba_tecnica_movil.databinding.HomeBinding
 import com.shipping.prueba_tecnica_movil.ui.viewmodel.QuoteViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import android.content.Context
+import android.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import com.shipping.prueba_tecnica_movil.ui.viewmodel.RemisionViewModel
 
@@ -95,8 +96,64 @@ class Home : Fragment() {
         mAdapter.setNavController( navController )
         setUpRecyclerView()
         initScrollRecycler()
-    }
+        initSearch(binding.root.findViewById<SearchView>(R.id.searchView))
 
+
+
+    }
+    private fun initSearch( searchView: SearchView ) {
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                if(!query.isNullOrEmpty() && query.isNotEmpty()){
+                    mAdapter.clear()
+                    currentPage = 0
+                    quoteViewModel.getCountryByPrefix( query )
+                        .observe(viewLifecycleOwner) { countries ->
+                            countries.map { mAdapter.add(it) }
+                            isloadin = false
+                        }
+
+                }
+                else{
+
+                    mAdapter.clear()
+                    currentPage = 0
+                    initDataIntoLIst()
+
+
+                }
+
+                return  false
+
+            }
+
+            override fun onQueryTextChange(query: String? ): Boolean {
+                if(!query.isNullOrEmpty()  ){
+
+                    mAdapter.clear()
+                    currentPage = 0
+                    quoteViewModel.getCountryByPrefix(query)
+                        .observe(viewLifecycleOwner) { countries ->
+                            countries.map { mAdapter.add(it) }
+                            isloadin = false
+                        }
+
+
+
+                }
+                else{
+
+                    mAdapter.clear()
+                    currentPage = 0
+                    initDataIntoLIst()
+
+                }
+
+                return false
+            }
+        })
+
+    }
     fun setUpRecyclerView(){
         mRecyclerView =  binding.root.findViewById(R.id.rvDeliveryInfo) as RecyclerView
         mRecyclerView.setHasFixedSize(true)
@@ -147,7 +204,8 @@ class Home : Fragment() {
                 val totalItemCount = mAdapter.itemCount
                 Log.d("userTAGRELOAD", "onScrolled: [$totalItemCount] [$lastVisibleItemPosition]")
                 if (totalItemCount -1 == lastVisibleItemPosition  && !isloadin  ) {
-                    funtionScroll()
+                    if(mAdapter.getSizeList() > 0 )
+                        funtionScroll()
                 }
 
             }
@@ -156,7 +214,7 @@ class Home : Fragment() {
 
     fun funtionScroll(){
         isloadin = true;
-        quoteViewModel.getRemissionsInBatches(currentPage + 5, currentPage)
+        quoteViewModel.getCountryByParts(currentPage + 5, currentPage)
             .observe(viewLifecycleOwner) { remisions ->
                 remisions.map { mAdapter.add(it) }
                 isloadin = false
@@ -166,7 +224,7 @@ class Home : Fragment() {
 
     fun initDataIntoLIst(){
         Log.d("INITFragment", "onScrolled: ")
-        val dd = quoteViewModel.getRemissionsInBatches( 5, currentPage)
+        val dd = quoteViewModel.getCountryByParts( 5, currentPage)
         dd.observe(viewLifecycleOwner) { remisions ->
             Log.d("GETDATAVIEW", "onScrolled: " + remisions)
             remisions.map { mAdapter.add(it) }

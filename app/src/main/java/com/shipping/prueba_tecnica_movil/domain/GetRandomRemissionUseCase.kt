@@ -8,10 +8,10 @@ import javax.inject.Inject
 class GetRandomRemissionUseCase @Inject constructor(private val repository: RemissionRepository) {
 
 
-    suspend fun getRemissionsInBatches( pageSize: Int, offset: Int ) :List<Country>{
-        Log.d("TAG", "getRemissionsInBatches: "+ pageSize )
+    suspend fun getCountriesInBatches(pageSize: Int, offset: Int ) :List<Country>{
+        Log.d("GET", "getCountriesInBatches: $pageSize")
         val list = repository.getCountriesInBatchesFromDataBase( pageSize, offset )
-        Log.d("TAG", "getRemissionsInBatches: "+ list )
+        Log.d("GET", "getCountriesInBatches: $list")
 
         if( !list.isNullOrEmpty() ){
             return list
@@ -19,6 +19,15 @@ class GetRandomRemissionUseCase @Inject constructor(private val repository: Remi
         //TODO aca deben de ir casos de errores
         return emptyList()
     }
+    suspend fun getCountriesByPrefix( prefix:String  ) :List<Country>{
+        val list = repository.getCountriesByPrefix( prefix  )
+        if( !list.isNullOrEmpty() ){
+            return list
+        }
+        //TODO aca deben de ir casos de errores
+        return emptyList()
+    }
+
 
 
     suspend fun updateRemissionList( remissionList: List<Country> ){

@@ -82,7 +82,7 @@ fun Country.toDatabase(): CountryEntity {
         flag = flag,
         maps =  Json.encodeToString<Map<String,String>>(maps),
         population = population,
-        gini =  Json.encodeToString<Map<String,Double>>(gini),
+        gini =  Json.encodeToString<Map<String,String>>(gini),
         fifa = fifa,
         timezones = timezones,
         continents = continents,

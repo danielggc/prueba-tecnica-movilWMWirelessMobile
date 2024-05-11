@@ -47,10 +47,20 @@ class QuoteViewModel @Inject constructor(
             }
         }
     }
-    fun getRemissionsInBatches(pageSize: Int, offset: Int): LiveData<List<Country>> {
-        Log.d("TAG", "getRemissionsInBatches: "+  offset)
+
+    fun getCountryByParts(pageSize: Int, offset: Int): LiveData<List<Country>> {
+        Log.d("TAG", "get countries by parts: $offset")
         return liveData{
-            val response = getRandomRemissionUseCase.getRemissionsInBatches(pageSize, offset)
+            val response = getRandomRemissionUseCase.getCountriesInBatches(pageSize, offset)
+            emit(response)
+        }
+    }
+
+
+    fun getCountryByPrefix(prefix:String ): LiveData<List<Country>> {
+        Log.d("TAG", "get countries for prefix : $prefix")
+        return liveData{
+            val response = getRandomRemissionUseCase.getCountriesByPrefix( prefix )
             emit(response)
         }
     }

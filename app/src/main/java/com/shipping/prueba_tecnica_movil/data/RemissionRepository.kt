@@ -25,6 +25,11 @@ class RemissionRepository @Inject constructor(
         return  response.data.mapIndexed { index, e ->  e.toDomain(index) }
     }
 
+    suspend fun getCountriesByPrefix( prefix: String ):List<Country>{
+        val response: List<CountryEntity> = quoteDao.getCountriesByPrefix( prefix )
+        return response.map { it.toDomain() }
+    }
+
     suspend fun getAllCountriesFromDatabase():List<Country>{
         val response: List<CountryEntity> = quoteDao.getAllCountries()
         return response.map { it.toDomain() }
@@ -38,8 +43,8 @@ class RemissionRepository @Inject constructor(
         return updatedRows
     }
     suspend fun  getCountriesInBatchesFromDataBase(pageSize: Int, offset: Int ) : List<Country>{
-        val response :List<CountryEntity> = quoteDao.getcountriesInBatches( pageSize ,offset )
-        Log.d("DATABASE", "getRemissionsInBatchesFromDataBAse:  " + response)
+        val response :List<CountryEntity> = quoteDao.getCountriesInBatches( pageSize ,offset )
+        Log.d("DATABASE", "get counties in batches form data base :  " + response)
         return  response.map{it.toDomain()}
     }
 

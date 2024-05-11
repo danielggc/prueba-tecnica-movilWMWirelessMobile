@@ -24,14 +24,14 @@ data class Country(
     val region: String,
     val subregion: String,
     val languages: Map<String, String>,
-    val latlng: List<Double>,
+    val latlng: List<String>,
     val landlocked: Boolean,
     val borders: List<String>,
     val area: Double,
     val flag: String,
     val maps: Map<String, String>,
     val population: Int,
-    val gini: Map<String, Double>,
+    val gini: Map<String, String>,
     val fifa: String,
     val timezones: List<String>,
     val continents: List<String>,
@@ -75,8 +75,11 @@ data class CoatOfArms(
     val svg: String = ""
 ): Serializable
 data class CapitalInfo(
-    val latlng: List<Double> = emptyList()
-): Serializable
+    val latlng: List<String> = emptyList()
+): Serializable{
+
+}
+
 data class PostalCode(
     val format: String = "",
     val regex: String = ""
@@ -139,20 +142,20 @@ fun CountryDto.toDomain( index :Int ): Country {
         region = validarString(region ),
         subregion = validarString(subregion),
         languages = validarMap( languages) ,
-        latlng = validateList(latlng),
+        latlng = validateList(latlng).map { e -> e.toString() },
         landlocked = validarBoolean(landlocked),
         borders = validateList(borders) ,
         area = validarDouble(area),
         flag = validarString(flag),
         maps = validarMap( maps ) ,
         population = validarInt(population),
-        gini = validarMap( gini ),
+        gini = validarMap( gini ).mapValues { e -> e.toString() },
         fifa = validarString(fifa),
         timezones = validateList(timezones),
         continents = validateList(continents),
         flags = validateDataFLags(flags),
         startOfWeek = validarString(startOfWeek),
-        capitalInfo = CapitalInfo(validateList(capitalInfo?.latlng ?: emptyList() ) ),
+        capitalInfo = CapitalInfo(validateList(capitalInfo?.latlng?.map { e -> e.toString() } ?: emptyList() ) ),
         postalCode = validarPostalCode(postalCode),
         cca2    = validarString(cca2) ,
         ccn3    = validarString(ccn3),
@@ -180,20 +183,20 @@ fun CountryEntity.toDomain(): Country {
         region = region,
         subregion = subregion,
         languages = convertStringToMap(languages),
-        latlng = latlng.map { e -> e.toDouble() },
+        latlng = latlng,
         landlocked = landlocked,
         borders = borders,
         area = area,
         flag = flag,
         maps = convertStringToMap(maps),
         population = population,
-        gini = Json.decodeFromString<Map<String,Double>>(gini),
+        gini = Json.decodeFromString<Map<String,String>>(gini),
         fifa = fifa,
         timezones = timezones,
         continents = continents,
         flags = flags,
         startOfWeek = startOfWeek,
-        capitalInfo = CapitalInfo( capitalInfoLatlng.map { e -> e.toDouble() } ) ,
+        capitalInfo = CapitalInfo( capitalInfoLatlng ),
         postalCode = PostalCode(format = postalCodeFormat, regex = postalCodeRegex),
         cca2=cca2,
         ccn3=ccn3,
@@ -205,10 +208,6 @@ fun CountryEntity.toDomain(): Country {
         positionCounter = positionCounter
     )
 }
-private fun capitalInfoEntityToDomain(  capitalInfoLatlng :String ):CapitalInfo =
-    if ( capitalInfoLatlng.isNotBlank() )
-          CapitalInfo( latlng = capitalInfoLatlng.split(",").map { it.toDouble() } )
-    else  CapitalInfo(latlng =  emptyList() )
 
 private fun convertStringToMap(data: String): Map<String, String> =
  Json.decodeFromString<Map<String,String>>(data)
