@@ -6,10 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
 import com.shipping.prueba_tecnica_movil.databinding.InfoCountryBinding
 import com.shipping.prueba_tecnica_movil.R
 import com.shipping.prueba_tecnica_movil.domain.model.Country
@@ -41,7 +43,7 @@ class InfoCountry :Fragment() {
 
         val navController = findNavController()
         val args:InfoCountryArgs by navArgs()
-        val amount = args.infoCountryData
+        val info = args.infoCountryData
 
 
         super.onViewCreated(view, savedInstanceState)
@@ -60,29 +62,29 @@ class InfoCountry :Fragment() {
 
         frameLayout = binding.root.findViewById( R.id.frame_layout_info )
         buttonGeneralInformation.setOnClickListener{
-            Log.d("click ", "click!!!!!}  " + amount.toString() )
-
             inflateLayout( R.layout.general_datails )
+            setVValuesGeneralInformation(info)
+
         }
 
         buttonGeographyInformation.setOnClickListener{
-            Log.d("click ", "click!!!!! " )
-
             inflateLayout( R.layout.geography_datails )
+            setValuesGeography(info)
+
         }
 
         buttonCultureInformation.setOnClickListener{
             inflateLayout( R.layout.datails_cultury )
+            setValueCulture(info)
         }
-        buttonGovernmentInformation.setOnClickListener{
-            Log.d("click ", "click!!!!! " )
 
+        buttonGovernmentInformation.setOnClickListener{
             inflateLayout( R.layout.government_administration )
+            setValuesGovernment(info)
         }
         buttonPopulationsInformation.setOnClickListener{
-            Log.d("click ", "click!!!!! " )
-
             inflateLayout( R.layout.datails_populations )
+            setValuesPopulation(info)
         }
 
 
@@ -100,7 +102,7 @@ class InfoCountry :Fragment() {
 
 
 
-    fun setvaluesGeneralInformation( info:Country ){
+    fun setVValuesGeneralInformation( info:Country ){
         val textRegionValue: TextView        = binding.root.findViewById(R.id.text_common_name_value)
         val textSubRegionValue: TextView     = binding.root.findViewById(R.id.text_official_name_value)
         val textNativeNameR: TextView        = binding.root.findViewById(R.id.text_native_name_r)
@@ -113,7 +115,7 @@ class InfoCountry :Fragment() {
 
         textRegionValue.text        = info.name.common
         textSubRegionValue.text     = info.name.official
-        textNativeNameR.text        = info.name.nativeName.ron.toString()
+        textNativeNameR.text        = info.name.nativeName
         textCountryCodeValue.text   = info.postalCode.format
         textNumericCodeValue.text   = info.cca2
         textCoaCodeR.text           = info.cca3
@@ -123,8 +125,8 @@ class InfoCountry :Fragment() {
     }
 
     fun setValuesGeography( info: Country ) {
-        val textRegionValue: TextView           =  binding.root.findViewById(R.id.text_common_name_value)
-        val textSubRegionValue: TextView        = binding.root.findViewById(R.id.text_official_name_value)
+        val textRegionValue: TextView           =  binding.root.findViewById(R.id.text_region_value)
+        val textSubRegionValue: TextView        = binding.root.findViewById(R.id.text_sub_region_value)
         val textLatLongValues: TextView         = binding.root.findViewById(R.id.text_lat_long_values)
         val textNeighborsValues: TextView       = binding.root.findViewById(R.id.text_neighbors_values)
         val textAreaValue: TextView             = binding.root.findViewById(R.id.text_area_value)
@@ -167,15 +169,23 @@ class InfoCountry :Fragment() {
     }
 
     fun setValueCulture( info: Country ) {
-        val textFlag: TextView              = binding.root.findViewById(R.id.flag_country_value)
-        val textCoatOfArmsValue: TextView   = binding.root.findViewById(R.id.text_coat_of_arms_value)
+        val textFlag              = binding.root.findViewById<ImageView>(R.id.flag_country_value)
+        val flagCoatArmsValue: ImageView   = binding.root.findViewById(R.id.flag_coat_arms_value)
+
+        Glide.with(  this )
+            .load(info.flags)
+            .centerCrop()
+            .into(textFlag)
+        Glide.with(  this )
+            .load(info.coatOfArms)
+            .centerCrop()
+            .into(flagCoatArmsValue)
         val textMapLinksValue: TextView     = binding.root.findViewById(R.id.text_map_links_value)
         val textCountryCodesValue: TextView = binding.root.findViewById(R.id.text_country_codes_value)
         val textRoadSideValue: TextView     = binding.root.findViewById(R.id.text_road_side_value)
         val textPostalCodeValue: TextView   = binding.root.findViewById(R.id.text_postal_code_value)
 
-        textCoatOfArmsValue.text    = info.coatOfArms
-        textMapLinksValue.text      = info.maps.toString()
+        textMapLinksValue.text      = info.maps.values.toString()
         textCountryCodesValue.text  = info.ccn3
         textRoadSideValue.text      = info.car
         textPostalCodeValue.text    = info.postalCode.regex

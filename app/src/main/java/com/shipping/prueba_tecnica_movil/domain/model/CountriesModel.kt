@@ -5,6 +5,7 @@ import com.shipping.prueba_tecnica_movil.data.model.CountryDto
 import com.shipping.prueba_tecnica_movil.data.model.DemonymDto
 import com.shipping.prueba_tecnica_movil.data.model.FlagsDto
 import com.shipping.prueba_tecnica_movil.data.model.NameDto
+import com.shipping.prueba_tecnica_movil.data.model.NativeNameDto
 import com.shipping.prueba_tecnica_movil.data.model.PostalCodeDto
 import java.io.Serializable
 import kotlinx.serialization.decodeFromString
@@ -56,14 +57,16 @@ data class Country(
 data class Name(
     val common: String = "",
     val official: String = "",
-    val nativeName: NativeNameDto
+    val nativeName: String ="",
 
 ): Serializable
-data class NativeNameDto(
-    val ron: RonDto
-): Serializable
 
-data class RonDto(
+@kotlinx.serialization.Serializable
+data class NativeName(
+    val ron: Ron
+): Serializable
+@kotlinx.serialization.Serializable
+data class Ron(
     val official: String,
     val common: String
 ): Serializable
@@ -82,9 +85,14 @@ data class PostalCode(
 
 
 private fun validateName(name: NameDto?): Name =
-    name?.let { (common, official) ->
-        Name(common ?: "", official ?: "")
-    } ?: Name()
+    name?.let { (common, official ,nativeName ) ->
+        Name(common ?: "", official ?: "" ,  validateNativeName( nativeName ).toString() )
+    } ?: Name("","","" )
+
+
+private fun validateNativeName( name:NativeNameDto? ) :String =
+    name?.let { data -> data.ron?.let{ ( d1 ,d2 ) -> " ${d1?: ""}  , ${d2?: ""} " } }
+        ?: ""
 private fun<A> validateList( list: List<A>?) :List<A> =
     list ?: emptyList()
 
@@ -146,6 +154,13 @@ fun CountryDto.toDomain( index :Int ): Country {
         startOfWeek = validarString(startOfWeek),
         capitalInfo = CapitalInfo(validateList(capitalInfo?.latlng ?: emptyList() ) ),
         postalCode = validarPostalCode(postalCode),
+        cca2    = validarString(cca2) ,
+        ccn3    = validarString(ccn3),
+        cca3    = validarString(cca3),
+        cioc        = validarString(cioc) ,
+        demonyms    = validarString( demonyms?.values?.map { e -> " f = ${e.f}, m = ${e.m} "  }.toString() ?: " " ),
+        coatOfArms  = validarString(coatOfArms?.png ?: coatOfArms?.svg ?: " " ),
+        car         = validarString(car?.side ?: "" ),
         positionCounter = index,
     )
 }
@@ -153,32 +168,40 @@ fun CountryEntity.toDomain(): Country {
     return Country(
         name = Name(
             common = nameCommon,
-            official = nameOfficial
+            official = nameOfficial,
+            nativeName = nativeName
         ),
         tld = tld,
         independent = independent,
         status = status,
         unMember = unMember,
         currencies = currencies,
-        capital = listOf(capital),
+        capital = capital,
         region = region,
         subregion = subregion,
         languages = convertStringToMap(languages),
-        latlng = latlng.split(",").map { it.toDouble() },
+        latlng = latlng.map { e -> e.toDouble() },
         landlocked = landlocked,
-        borders = borders.split(","),
+        borders = borders,
         area = area,
         flag = flag,
         maps = convertStringToMap(maps),
         population = population,
         gini = Json.decodeFromString<Map<String,Double>>(gini),
         fifa = fifa,
-        timezones = timezones.split(","),
-        continents = continents.split(","),
+        timezones = timezones,
+        continents = continents,
         flags = flags,
         startOfWeek = startOfWeek,
-        capitalInfo = capitalInfoEntityToDomain( capitalInfoLatlng ) ,
+        capitalInfo = CapitalInfo( capitalInfoLatlng.map { e -> e.toDouble() } ) ,
         postalCode = PostalCode(format = postalCodeFormat, regex = postalCodeRegex),
+        cca2=cca2,
+        ccn3=ccn3,
+        cca3=cca3,
+        cioc=cioc,
+        demonyms=demonyms,
+        coatOfArms=coatOfArms,
+        car=car,
         positionCounter = positionCounter
     )
 }

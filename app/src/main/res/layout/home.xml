@@ -103,6 +103,13 @@
 
 
         </LinearLayout>
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:queryHint="Search Here..."
+            android:iconifiedByDefault="false"
+            android:layout_margin="16dp"/>
 
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
