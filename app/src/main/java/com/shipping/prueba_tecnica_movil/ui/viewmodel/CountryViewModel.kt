@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class QuoteViewModel @Inject constructor(
+class CountryViewModel @Inject constructor(
     private val getQuotesUseCase: GetCountryModelUseCase,
     private val getRandomRemissionUseCase: GetRandomCountryUseCase,
 
@@ -61,6 +61,14 @@ class QuoteViewModel @Inject constructor(
         Log.d("TAG", "get countries for prefix : $prefix")
         return liveData{
             val response = getRandomRemissionUseCase.getCountriesByPrefix( prefix )
+            emit(response)
+        }
+    }
+
+    fun getCountryByCoutryCode(code:String ): LiveData<List<Country>> {
+        Log.d("TAG", "get countries for country code : $code")
+        return liveData{
+            val response = getRandomRemissionUseCase.getCountriesByCountryCode( code )
             emit(response)
         }
     }

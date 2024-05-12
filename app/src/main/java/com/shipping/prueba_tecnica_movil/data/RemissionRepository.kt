@@ -30,6 +30,11 @@ class RemissionRepository @Inject constructor(
         return response.map { it.toDomain() }
     }
 
+    suspend fun getCountriesByCountryCode( code: String ):List<Country>{
+        val response: List<CountryEntity> = quoteDao.getCountriesByCodeCountry( code )
+        return response.map { it.toDomain() }
+    }
+
     suspend fun getAllCountriesFromDatabase():List<Country>{
         val response: List<CountryEntity> = quoteDao.getAllCountries()
         return response.map { it.toDomain() }

@@ -13,6 +13,9 @@
 
         @Query("SELECT * FROM country_table ORDER BY name_common DESC")
         suspend fun getAllCountries():List<CountryEntity>
+
+        @Query("SELECT * FROM country_table WHERE cca3 = :code ORDER BY cca3 ASC")
+        suspend fun getCountriesByCodeCountry(code: String): List<CountryEntity>
         @Query("SELECT * FROM country_table WHERE name_common LIKE :prefix || '%' ORDER BY name_common DESC")
         suspend fun getCountriesByPrefix(prefix: String): List<CountryEntity>
 

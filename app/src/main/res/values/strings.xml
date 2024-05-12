@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Login Page</string>
+    <string name="app_name">Countries</string>
     <string name="login_welcome_text">Bienvenido !</string>
     <string name="edit_text_username">Username</string>
     <string name="edit_text_password">Password</string>

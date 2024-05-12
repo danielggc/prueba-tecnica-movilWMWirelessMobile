@@ -1,16 +1,21 @@
 package com.shipping.prueba_tecnica_movil.ui.view
 
+import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
@@ -21,9 +26,16 @@ import com.bumptech.glide.request.target.Target
 import com.shipping.prueba_tecnica_movil.databinding.InfoCountryBinding
 import com.shipping.prueba_tecnica_movil.R
 import com.shipping.prueba_tecnica_movil.domain.model.Country
+import com.shipping.prueba_tecnica_movil.ui.viewmodel.CountryViewModel
+import dagger.hilt.android.AndroidEntryPoint
+
+@AndroidEntryPoint
 
 class InfoCountry :Fragment() {
     private  var _binding: InfoCountryBinding? = null
+
+    private val countryViewModel: CountryViewModel by viewModels()
+
     private val binding get() = _binding!!
     lateinit var frameLayout: FrameLayout
 
@@ -33,6 +45,11 @@ class InfoCountry :Fragment() {
         super.onCreate(savedInstanceState)
     }
 
+    override fun onResume() {
+        super.onResume()
+        countryViewModel.onCreate()
+
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -47,7 +64,6 @@ class InfoCountry :Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.loadingHome.isVisible = false
 
-        val navController = findNavController()
         val args:InfoCountryArgs by navArgs()
         val info = args.infoCountryData
 
@@ -130,18 +146,39 @@ class InfoCountry :Fragment() {
         textUnMemberR.text          = info.unMember.toString()
     }
 
-    fun setValuesGeography( info: Country ) {
+    fun setValuesGeography( info: Country  ) {
+
+
         val textRegionValue: TextView           =  binding.root.findViewById(R.id.text_region_value)
         val textSubRegionValue: TextView        = binding.root.findViewById(R.id.text_sub_region_value)
         val textLatLongValues: TextView         = binding.root.findViewById(R.id.text_lat_long_values)
-        val textNeighborsValues: TextView       = binding.root.findViewById(R.id.text_neighbors_values)
+        val textNeighborsValues: LinearLayout   = binding.root.findViewById(R.id.buttons_neighbors_container_value)
         val textAreaValue: TextView             = binding.root.findViewById(R.id.text_area_value)
         val textLandlockedValue: TextView       = binding.root.findViewById(R.id.text_landlocked_value)
+        for (name in info.borders) {
+            val button: Button = Button(this.context)
+            button.textSize =5f
+            button.setBackgroundColor(Color.WHITE )
+            button.setTextColor(Color.BLACK)
+            val layoutParams = ConstraintLayout.LayoutParams(  150, 70)
+            layoutParams.setMargins(10  , 20 , 10, 20)
+            button.layoutParams = layoutParams
+            button.text = name
+            button.setOnClickListener {
+                val data  = countryViewModel.getCountryByCoutryCode( name )
+                data    .observe(viewLifecycleOwner) { country ->
+                    findNavController().navigate( InfoCountryDirections.actionInfoCountrySelf( country.first() )  )
+                }
+
+            }
+            textNeighborsValues.addView(button)
+
+
+        }
 
         textRegionValue.text        = info.region
         textSubRegionValue.text     = info.subregion
         textLatLongValues.text      = info.latlng.toString()
-        textNeighborsValues.text    = info.borders.toString()
         textAreaValue.text          = info.area.toString()
         textLandlockedValue.text    = info.landlocked.toString()
     }

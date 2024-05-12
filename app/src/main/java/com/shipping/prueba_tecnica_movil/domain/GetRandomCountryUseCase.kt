@@ -27,7 +27,14 @@ class GetRandomCountryUseCase @Inject constructor(private val repository: Remiss
         //TODO aca deben de ir casos de errores
         return emptyList()
     }
-
+    suspend fun getCountriesByCountryCode( code:String  ) :List<Country>{
+        val list = repository.getCountriesByCountryCode( code  )
+        if( !list.isNullOrEmpty() ){
+            return list
+        }
+        //TODO aca deben de ir casos de errores
+        return emptyList()
+    }
 
 
     suspend fun updateRemissionList( remissionList: List<Country> ){

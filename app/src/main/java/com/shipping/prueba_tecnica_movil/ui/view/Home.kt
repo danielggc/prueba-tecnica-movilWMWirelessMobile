@@ -19,7 +19,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.shipping.prueba_tecnica_movil.R
 import com.shipping.prueba_tecnica_movil.adapters.RecyclerAdapterDeliveryInfo
 import com.shipping.prueba_tecnica_movil.databinding.HomeBinding
-import com.shipping.prueba_tecnica_movil.ui.viewmodel.QuoteViewModel
+import com.shipping.prueba_tecnica_movil.ui.viewmodel.CountryViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import android.content.Context
 import android.widget.SearchView
@@ -32,7 +32,7 @@ class Home : Fragment() {
     private lateinit var remisionViewModel: RemisionViewModel
 
     private val binding get() = _binding!!
-    private val quoteViewModel: QuoteViewModel by viewModels()
+    private val countryViewModel: CountryViewModel by viewModels()
     private  lateinit var mAdapter : RecyclerAdapterDeliveryInfo
     lateinit var mRecyclerView : RecyclerView
     private var currentPage = 0
@@ -71,7 +71,7 @@ class Home : Fragment() {
         if( !hasExecuted ){
             Log.d("onResume", "onScrolled: ")
             mAdapter.clear()
-            quoteViewModel.onCreate()
+            countryViewModel.onCreate()
             initDataIntoLIst()
             sharedPreferences.edit().putBoolean("has_executed", true).apply()
             hasExecuted = true
@@ -83,7 +83,7 @@ class Home : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        quoteViewModel.isLoading.observe(viewLifecycleOwner, Observer {
+        countryViewModel.isLoading.observe(viewLifecycleOwner, Observer {
             if( !it ) {
                 mAdapter.clear()
                 currentPage = 0
@@ -108,7 +108,7 @@ class Home : Fragment() {
                 if(!query.isNullOrEmpty() && query.isNotEmpty()){
                     mAdapter.clear()
                     currentPage = 0
-                    quoteViewModel.getCountryByPrefix( query )
+                    countryViewModel.getCountryByPrefix( query )
                         .observe(viewLifecycleOwner) { countries ->
                             countries.map { mAdapter.add(it) }
                             isloadin = false
@@ -133,7 +133,7 @@ class Home : Fragment() {
 
                     mAdapter.clear()
                     currentPage = 0
-                    quoteViewModel.getCountryByPrefix(query)
+                    countryViewModel.getCountryByPrefix(query)
                         .observe(viewLifecycleOwner) { countries ->
                             countries.map { mAdapter.add(it) }
                             isloadin = false
@@ -171,7 +171,7 @@ class Home : Fragment() {
             when (menuItem.itemId) {
                 R.id.menu_recarge_home -> {
                     mAdapter.clear()
-                    quoteViewModel.onCreate()
+                    countryViewModel.onCreate()
                     true
                 }
 
@@ -208,7 +208,7 @@ class Home : Fragment() {
 
     fun funtionScroll(){
         isloadin = true;
-        quoteViewModel.getCountryByParts(currentPage + 5, currentPage)
+        countryViewModel.getCountryByParts(currentPage + 5, currentPage)
             .observe(viewLifecycleOwner) { remisions ->
                 remisions.map { mAdapter.add(it) }
                 isloadin = false
@@ -218,14 +218,14 @@ class Home : Fragment() {
 
     fun initDataIntoLIst(){
         Log.d("INITFragment", "onScrolled: ")
-        val dd = quoteViewModel.getCountryByParts( 5, currentPage)
+        val dd = countryViewModel.getCountryByParts( 5, currentPage)
         dd.observe(viewLifecycleOwner) { remisions ->
             Log.d("GETDATAVIEW", "onScrolled: " + remisions)
             remisions.map { mAdapter.add(it) }
             if( mAdapter.getSizeList() == 0 ){
                 mAdapter.clear()
                 currentPage = 0
-                quoteViewModel.onCreate()
+                countryViewModel.onCreate()
 
             }
         }
