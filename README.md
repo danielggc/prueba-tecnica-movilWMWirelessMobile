@@ -14,12 +14,19 @@ Este proyecto es una aplicación Android desarrollada en Kotlin que muestra una 
 
 ## Pantallas
 
-![Captura de pantalla 1](Screenshot_2024-05-11-14-13-35-123_com.cursokotlin.mvvmexample.jpg)
-![Captura de pantalla 2](Screenshot_2024-05-11-14-13-59-913_com.cursokotlin.mvvmexample.jpg)
-![Captura de pantalla 3](Screenshot_2024-05-11-14-14-08-110_com.cursokotlin.mvvmexample.jpg)
-![Captura de pantalla 4](Screenshot_2024-05-11-14-14-16-135_com.cursokotlin.mvvmexample.jpg)
- video de la aplicacion : [https://youtu.be/r2jdqWoa0-o?feature=shared]
+![Captura de pantalla 1](Screenshot_2024-05-11-20-36-00-321_com.cursokotlin.mvvmexample.jpg)
+![Captura de pantalla 2](Screenshot_2024-05-11-20-36-05-090_com.cursokotlin.mvvmexample.jpg)
+![Captura de pantalla 3](Screenshot_2024-05-11-20-36-10-880_com.cursokotlin.mvvmexample.jpg)
+![Captura de pantalla 4](Screenshot_2024-05-11-20-36-16-966_com.cursokotlin.mvvmexample.jpg)
+![Captura de pantalla 4](Screenshot_2024-05-11-20-36-19-275_com.cursokotlin.mvvmexample.jpg)
+![Captura de pantalla 4](Screenshot_2024-05-11-20-36-22-669_com.cursokotlin.mvvmexample.jpg)
+![Captura de pantalla 4](Screenshot_2024-05-11-20-36-25-827_com.cursokotlin.mvvmexample.jpg)
+![Captura de pantalla 4](Screenshot_2024-05-11-20-36-29-592_com.cursokotlin.mvvmexample.jpg)
+
+
+ video de la aplicacion : [https://youtu.be/D9gvur05iW0?si=MfSAPEI9I-EkbBLh]
 ### Pantalla de Login
+Puedes porner cualcuer credeciales en el login dado que esta desactivado la autenticacion 
 
 La pantalla de inicio de sesión presenta los siguientes elementos:
 
