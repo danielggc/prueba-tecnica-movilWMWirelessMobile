@@ -26,7 +26,7 @@ Este proyecto es una aplicación Android desarrollada en Kotlin que muestra una 
 
  video de la aplicacion : [https://youtu.be/D9gvur05iW0?si=MfSAPEI9I-EkbBLh]
 ### Pantalla de Login
-Puedes porner cualcuer credeciales en el login dado que esta desactivado la autenticacion 
+Puedes porner cualcuer credeciales en el login   dado que esta desactivado la autenticacion el password solo admite string numerico  -> solo numeros 
 
 La pantalla de inicio de sesión presenta los siguientes elementos:
 
